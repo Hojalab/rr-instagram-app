@@ -123,6 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  faraday
   instagram (~> 0.10.0)
   jquery-rails
   json
