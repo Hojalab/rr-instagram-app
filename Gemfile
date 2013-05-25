@@ -6,7 +6,7 @@ gem 'json'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "instagram", '~> 0.10.0'
+gem "instagram", '~> 0.8.0'
 
 
 #SQLite database for dev
