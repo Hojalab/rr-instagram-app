@@ -1,66 +1,26 @@
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.3/angular.min.js"></script>
-
-
-
-
-
-  
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span12">
-        <section> 
-          <ul class="thumbnails tiles">
-            <li class="span3 tile">
-              <div class="tile-inner">
-                <div class="tile-img"><img src="http://media.lolwall.co/c/2013/01/instagram-in-a-nutshell_258586-612x.jpeg"/>
-                  <div class="description">
-                    <This>is a hidden description that is visible on hover.</This>
-                  </div>
-                </div>
-                <div class="meta clearfix">
-                  <div class="pull-left">
-                    <div class="username">Username</div>
-                  </div>
-                  <div class="pull-right"><a href="#"><i class="icon-comment"></i></a><a href="#"><i class="icon-heart"></i></a></div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </div>
-  </div>
-</body>
-
 <h1>Listing pages</h1>
-
 <table>
-  <tr>
-    <th>Slug</th>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Created</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @pages.each do |page| %>
-  <tr>
-    <td><%= page.slug %></td>
-    <td><%= page.title %></td>
-    <td><%= page.content %></td>
-    <td><%= page.created %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+	<tr>
+		<th>Slug</th>
+		<th>Title</th>
+		<th>Content</th>
+		<th>Created</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @pages.each do |page| %>
+	<tr>
+		<td><%= page.slug %></td>
+		<td><%= page.title %></td>
+		<td><%= page.content %></td>
+		<td><%= page.created %></td>
+		<td><%= link_to 'Show', page %></td>
+		<td><%= link_to 'Edit', edit_page_path(page) %></td>
+		<td><%= link_to 'Destroy', page, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+	</tr>
+	<% end %>
 </table>
-
 <br />
-
-<%= link_to 'New Page', new_page_path %>
+<%= link_to 'New Page', new_page_path %> 

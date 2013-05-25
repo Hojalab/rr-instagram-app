@@ -1,0 +1,26 @@
+<section>
+	<ul class="thumbnails tiles">
+		<li class="span tile" ng-repeat="item in App.data">
+			<div class="tile-inner">
+				<div class="tile-img">
+					<img src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
+					<div class="description">
+						<This>
+							is a hidden description that is visible on hover.
+						</This>
+					</div>
+				</div>
+				<div class="meta clearfix">
+					<div class="pull-left">
+						<div class="username">
+							{{item.user.username}}
+						</div>
+					</div>
+					<div class="pull-right">
+						<a href="#"><i class="icon-comment"></i></a><a href="#"><i class="icon-heart"></i></a>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</section>

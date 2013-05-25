@@ -6,7 +6,8 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'instagram'
+
+gem 'instagram', '~> 0.10.0'
 gem 'sqlite3'
 
 gem 'json'

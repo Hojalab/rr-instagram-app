@@ -28,6 +28,7 @@ footer {
 	padding: 5px;
 	text-align: center;
 }
+
 legend {
 	clear: both;
 }
@@ -36,7 +37,6 @@ legend {
 	display: block;
 	margin-bottom: 9px;
 }
-
 
 
 /* @end */
@@ -48,16 +48,19 @@ legend {
 	font-size: 50px !important;
 	font-weight: 'bold';
 }
-.brand:hover{
+
+.brand:hover {
 	background-color: transparent;
 }
 
 .page-header {
 	border-bottom: 4px solid #cccccc;
 }
+
 .page-header h1 {
 	font-size: 2.1em;
 }
+
 .page-header small {
 	display: block;
 	font-size: 1.7em;
@@ -70,14 +73,16 @@ legend {
 .navbar input.search-query {
 	background: #111 !important;
 }
-.navbar input.search-query:focus{
+
+.navbar input.search-query:focus {
 	color: #ffffff !important;
 	text-shadow: none !important;
 }
 
-.navbar .nav{
+.navbar .nav {
 	margin-top: 15px;
 }
+
 .navbar a.btn {
 	margin-left: 20px;
 	border-radius: 10px;
@@ -87,7 +92,8 @@ legend {
 div.navbar-search.pull-right {
 	margin-top: 25px;
 }
-.navbar a.btn:hover{
+
+.navbar a.btn:hover {
 	background-color: #222 !important;
 	color: #888 !important;
 }
@@ -114,6 +120,12 @@ div.navbar-search.pull-right {
 .tiles {
 	margin-top: 20px;
 }
+
+.tiles li {
+	margin-top: 10px !important;
+	margin-left: 15px !important;
+}
+
 .tile {
 	padding: 8px;
 	border: 1px solid #777777;
@@ -121,18 +133,41 @@ div.navbar-search.pull-right {
 	background: #434242;
 	color: white;
 }
+
+.tile img {
+	height: 220px;
+	width: 100%;
+	opacity: .7;
+}
+
 .tile .meta {
 	padding: 8px 5px;
 }
+
 .tile .meta .username {
 	font-size: 12px;
 }
+
 .tile .meta i {
 	margin-left: 25px;
 }
+
 .tile-inner .tile-img {
 	position: relative;
 }
+
+.tile:hover,
+.tile:focus {
+	border-color: #16b0bf;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+	-moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+	box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+
+.tile:hover img {
+	opacity: 1;
+}
+
 .tile:hover .description {
 	display: block;
 	opacity: 0.8;
@@ -142,6 +177,7 @@ div.navbar-search.pull-right {
 	-ms-transition: opacity 500ms ease-in-out;
 	transition: opacity 500ms ease-in-out;
 }
+
 .tile-inner .description {
 	display: block;
 	position: absolute;

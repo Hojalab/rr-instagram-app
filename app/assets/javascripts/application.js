@@ -27,6 +27,10 @@ function AppCtrl($scope, $http){
     build: '0.0.1',
     title: 'App',
     description: 'This is an example app',
+    model: {
+    	filters: []
+    },
+    data: null,
     settings: {
       debug: true
     },
@@ -36,10 +40,16 @@ function AppCtrl($scope, $http){
     },
     //https://api.instagram.com/v1/media/popular?client_id=42af9189076c4ce7903df62e8afa2009
     getPopular:function(){
-     $http.get('/popular.json').success(function(data){
-     	$scope.App.data = data;
-     	console.log(data);
+     $http.get('/popular.json').success(function(results){
+     	$scope.App.data = results.data;
+     	angular.forEach(results.data, function(obj, index){
+     		$scope.App.model.filters.push(obj.filter);
+     		console.log(index, obj);
+     	});
+     	console.log(results);
      });
     }
   };
+  
+  window.App = $scope.App;
 }
