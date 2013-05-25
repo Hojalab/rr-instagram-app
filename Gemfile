@@ -7,10 +7,13 @@ gem 'rails', '3.2.13'
 
 
 
-
-gem 'sqlite3'
+gem 'linecache'
+gem "instagram", "~> 0.10.0"
 gem 'json'
 
+group :test do
+  gem 'sqlite3'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -39,4 +42,3 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'ruby-debug'
-gem "instagram", "~> 0.10.0"
