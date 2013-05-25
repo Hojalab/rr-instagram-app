@@ -123,7 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  instagram
+  instagram (~> 0.10.0)
   jquery-rails
   json
   rails (= 3.2.13)
