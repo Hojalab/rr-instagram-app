@@ -1,5 +1,5 @@
 require "rubygems"
-#require "instagram"
+
 
 
 # All methods require authentication (either by client ID or access token).
