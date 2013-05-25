@@ -20,7 +20,7 @@
 /**
  * App
  */
-var App = angular.module('App', []);
+var App = angular.module('App', ['$strap.directives']);
 
 function AppCtrl($scope, $http, $timeout) {
 
@@ -70,6 +70,7 @@ function AppCtrl($scope, $http, $timeout) {
 		 */
 		getPopular : function() {
 			this.log('getPopular');
+			$scope.App.data = [];
 			$http.get('/data/popular.json').success(function(results) {
 				$scope.App.data = results.data;
 				console.log(results);
@@ -95,10 +96,11 @@ function AppCtrl($scope, $http, $timeout) {
 		},
 		selectTile: function(obj){
 			this.selectedTile = obj;
-			this.log('selectTile', obj);
+			console.log('selectTile', obj);
 		}
 		
 	};
 
 	window.App = $scope.App;
+	//angular.element('.tip').tooltip();
 }

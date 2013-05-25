@@ -1,4 +1,5 @@
 require "rubygems"
+
 #require "instagram"
 
 # All methods require authentication (either by client ID or access token).
@@ -12,16 +13,17 @@ class HomeController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
-    
+
     @pages = Page.all
-   # @popular = Instagram.media_popular;
-    
+    # @popular = Instagram.media_popular;
+
     # Get a list of the overall most popular media items
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @popular }
     end
   end
+
   def connect
     redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
   end
@@ -31,9 +33,9 @@ class HomeController < ApplicationController
     session[:access_token] = response.access_token
     redirect_to :controller => 'feed', :action => 'index'
   end
+
   def instagram
 
-    
     # Get a list of a user's most recent media
     puts Instagram.user_recent_media(777)
 

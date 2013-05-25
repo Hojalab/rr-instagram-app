@@ -17,11 +17,11 @@
 						</div>
 					</div>
 					<div class="pull-right links">
-						<a href="#">
+						<a href="#" class="tip" ng-model="item.comments.count" title="{{item.comments.count}}">
 							<!-- <i class="icon-comment"></i> -->
 							<img src="/img/tile-comment.png" class="icon"/>
 						</a>
-						<a href="#">
+						<a href="#" class="tip" ng-model="item.comments.count" title="{{item.comments.count}}">
 							<!-- <i class="icon-heart"></i> -->
 							<img src="/img/tile-heart.png" class="icon"/>
 						</a>
@@ -34,7 +34,7 @@
 	<div class="modal fade hide" id="tileDetailModal">
 	  <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal">×</button>
-	    <h3>{{App.selectedTile.caption.text}}</h3>
+	    <h3>{{App.selectedTile.user.username}}</h3>
 	  </div>
 	  <div class="modal-body">
 		<img ng-src="{{App.selectedTile.images.standard_resolution.url}}"/>
