@@ -41,6 +41,7 @@ function AppCtrl($scope, $http, $timeout) {
 		settings : {
 			debug : true
 		},
+		selectedTile: null,
 		/**
 		 * Handle initializing the application.
 		 */
@@ -91,6 +92,10 @@ function AppCtrl($scope, $http, $timeout) {
 		 */
 		search: function(){
 			this.log('search', $scope.search);
+		},
+		selectTile: function(obj){
+			this.selectedTile = obj;
+			this.log('selectTile', obj);
 		}
 		
 	};

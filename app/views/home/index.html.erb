@@ -3,11 +3,11 @@
 		<li class="span3 tile" ng-repeat="item in App.data">
 			<div class="tile-inner">
 				<div class="tile-img">
-					<img class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
+					<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
+						<img class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
+					</a>
 					<div class="description">
-						<This>
-							is a hidden description that is visible on hover.
-						</This>
+						{{item.caption.text}}
 					</div>
 				</div>
 				<div class="meta clearfix">
@@ -30,4 +30,14 @@
 			</div>
 		</li>
 	</ul>
+
+	<div class="modal fade hide" id="tileDetailModal">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal">×</button>
+	    <h3>{{App.selectedTile.caption.text}}</h3>
+	  </div>
+	  <div class="modal-body">
+		<img ng-src="{{App.selectedTile.images.standard_resolution.url}}"/>
+	  </div>
+	</div>
 </section>
