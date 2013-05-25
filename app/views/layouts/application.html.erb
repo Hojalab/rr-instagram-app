@@ -26,17 +26,19 @@
 					<div style="height: auto;" class="nav-collapse in collapse">
 						<ul class="nav pull-left">
 							<li>
-								<a href="#" class="btn btn-inverse">Popular</a>
+								<a href="#" class="btn btn-inverse" ng-click="App.getPopular()">Popular</a>
 							</li>
 							<li>
-								<a class="btn btn-inverse">Trending</a>
+								<a href="#" class="btn btn-inverse" ng-click="App.getTrending()">Trending</a>
 							</li>
 							<li>
-								<a class="btn btn-inverse">Recent</a>
+								<a href="#" class="btn btn-inverse" ng-click="App.getRecent()">Recent</a>
 							</li>
 						</ul>
 						<div class="navbar-search pull-right">
-							<input type="text" placeholder="search" class="span3 search-query"/>
+							<form ng-submit="App.search();">
+								<input type="text" placeholder="search" class="span3 search-query" ng-model="search" ng-change="App.search();"/>
+							</form>
 						</div>
 					</div>
 				</div>

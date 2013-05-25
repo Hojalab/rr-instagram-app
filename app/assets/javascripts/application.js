@@ -22,34 +22,71 @@
  */
 var App = angular.module('App', []);
 
-function AppCtrl($scope, $http){
-  $scope.App = {
-    build: '0.0.1',
-    title: 'App',
-    description: 'This is an example app',
-    model: {
-    	filters: []
-    },
-    data: null,
-    settings: {
-      debug: true
-    },
-    init: function(args){
-    	this.getPopular();
-      console.log(this.title, args, this, $scope);
-    },
-    //https://api.instagram.com/v1/media/popular?client_id=42af9189076c4ce7903df62e8afa2009
-    getPopular:function(){
-     $http.get('/popular.json').success(function(results){
-     	$scope.App.data = results.data;
-     	angular.forEach(results.data, function(obj, index){
-     		$scope.App.model.filters.push(obj.filter);
-     		console.log(index, obj);
-     	});
-     	console.log(results);
-     });
-    }
-  };
-  
-  window.App = $scope.App;
+function AppCtrl($scope, $http) {
+
+	/**
+	 * Application Object.
+	 * This object holds methods and proporties for this app.
+	 */
+	$scope.filter = '';
+	$scope.search = '';
+	$scope.App = {
+		build : '0.0.1',
+		title : 'App',
+		description : 'This is an example app',
+		model : {
+			filters : []
+		},
+		data : null,
+		settings : {
+			debug : true
+		},
+		/**
+		 * Handle initializing the application.
+		 */
+		init : function(args) {
+			this.getPopular();
+			console.log(this.title, args, this, $scope);
+		},
+		/**
+		 * Handle logging output to the console.
+		 */
+		log: function(obj){
+			if(this.settings.debug){
+				console.log(obj);
+			}
+		},
+		/**
+		 * Handle getting the popular data from Instagram.
+		 * https://api.instagram.com/v1/media/popular?client_id=42af9189076c4ce7903df62e8afa2009
+		 */
+		getPopular : function() {
+			this.log('getPopular');
+			$http.get('/data/popular.json').success(function(results) {
+				$scope.App.data = results.data;
+				console.log(results);
+			});
+		},
+		/**
+		 * Handle getting the trending images from Instagram.
+		 */
+		getTrending: function(){
+			this.log('getTrending');
+		},
+		/**
+		 * Handle getting the recent images from Instagram.
+		 */
+		getRecent: function(){
+			this.log('getRecent');
+		},
+		/**
+		 * Handle searching images from Instagram.
+		 */
+		search: function(){
+			this.log('search', $scope.search);
+		}
+		
+	};
+
+	window.App = $scope.App;
 }
