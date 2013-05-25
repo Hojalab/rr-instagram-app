@@ -1,6 +1,12 @@
+require "rubygems"
+#require "instagram"
 
-
-require "instagram"
+# All methods require authentication (either by client ID or access token).
+# To get your Instagram OAuth credentials, register an app at http://instagr.am/oauth/client/register/
+#Instagram.configure do |config|
+#  config.client_id = '42af9189076c4ce7903df62e8afa2009'
+#  config.access_token = YOUR_ACCESS_TOKEN
+#end
 
 class HomeController < ApplicationController
   # GET /pages
@@ -8,7 +14,7 @@ class HomeController < ApplicationController
   def index
     
     @pages = Page.all
-    @popular = Instagram.media_popular;
+   # @popular = Instagram.media_popular;
     
     # Get a list of the overall most popular media items
     respond_to do |format|
