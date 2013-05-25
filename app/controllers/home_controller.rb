@@ -1,4 +1,6 @@
-require "rubygems"
+require 'rubygems'
+require 'bundler/setup'
+#require "instagram"
 
 
 
@@ -8,8 +10,7 @@ require "rubygems"
 #  config.client_id = '42af9189076c4ce7903df62e8afa2009'
 #  config.access_token = YOUR_ACCESS_TOKEN
 #end
-require 'net/http'
-require 'uri'
+
 
 class HomeController < ApplicationController
   # GET /pages
