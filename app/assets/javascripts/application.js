@@ -31,11 +31,15 @@ function AppCtrl($scope, $http){
       debug: true
     },
     init: function(args){
+    	this.getPopular();
       console.log(this.title, args, this, $scope);
     },
     //https://api.instagram.com/v1/media/popular?client_id=42af9189076c4ce7903df62e8afa2009
     getPopular:function(){
-      
+     $http.get('/popular.json').success(function(data){
+     	$scope.App.data = data;
+     	console.log(data);
+     });
     }
   };
 }
