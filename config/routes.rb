@@ -1,4 +1,27 @@
 RrInstagramWebapp::Application.routes.draw do
+  resources :pages
+
+  
+  #REST resources
+  resources :logs
+  resources :posts
+
+  #Home page
+  get "pages/index"
+  
+
+
+
+
+    #...
+    # You can have the root of your site routed with "root"
+    # just remember to delete public/index.html.
+    root :to => "pages#index"
+    
+    match 'pages/:slud' => 'pages#slug'
+    #match 'timeline/:id' => 'home#timeline'
+    #match 'public/:id' => 'home#public'
+    #match 'mentions/:id' => 'home#mentions'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

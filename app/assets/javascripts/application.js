@@ -13,3 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+/**
+ * App
+ */
+var App = angular.module('App', []);
+
+function MainCtrl($scope, $http){
+  $scope.App = {
+    build: '0.0.1',
+    title: 'App',
+    description: 'This is an example app',
+    settings: {
+      debug: true
+    },
+    init: function(args){
+      console.log(this.title, args, this, $scope);
+    }
+  };
+}
