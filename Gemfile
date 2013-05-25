@@ -1,13 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-gem 'faraday'
+gem 'rails'
+gem 'json'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "instagram", '~> 0.10.0'
 
-#gem 'pg'
+
+#SQLite database for dev
+group :development, :test do
+   gem 'sqlite3'
+  #gem "sqlite3-ruby", "~> 1.3.7", :require => "sqlite3"
+end
 group :test do
 end
 # Gems used only for assets and not required
@@ -39,4 +45,4 @@ gem 'jquery-rails'
 # To use debugger
 gem 'ruby-debug'
 
-gem 'json'
+
