@@ -3,7 +3,7 @@
 		<li class="span3 tile" ng-repeat="item in App.data">
 			<div class="tile-inner">
 				<div class="tile-img">
-					<img src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
+					<img class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
 					<div class="description">
 						<This>
 							is a hidden description that is visible on hover.
@@ -16,8 +16,15 @@
 							{{item.user.username}}
 						</div>
 					</div>
-					<div class="pull-right">
-						<a href="#"><i class="icon-comment"></i></a><a href="#"><i class="icon-heart"></i></a>
+					<div class="pull-right links">
+						<a href="#">
+							<!-- <i class="icon-comment"></i> -->
+							<img src="/img/tile-comment.png" class="icon"/>
+						</a>
+						<a href="#">
+							<!-- <i class="icon-heart"></i> -->
+							<img src="/img/tile-heart.png" class="icon"/>
+						</a>
 					</div>
 				</div>
 			</div>

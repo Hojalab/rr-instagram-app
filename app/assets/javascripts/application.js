@@ -22,7 +22,7 @@
  */
 var App = angular.module('App', []);
 
-function AppCtrl($scope, $http) {
+function AppCtrl($scope, $http, $timeout) {
 
 	/**
 	 * Application Object.
@@ -46,7 +46,14 @@ function AppCtrl($scope, $http) {
 		 */
 		init : function(args) {
 			this.getPopular();
+			
+			
 			console.log(this.title, args, this, $scope);
+			
+			$timeout(function(){
+				console.log('time');
+			}, 3000);
+			
 		},
 		/**
 		 * Handle logging output to the console.
