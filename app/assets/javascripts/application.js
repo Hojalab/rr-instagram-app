@@ -55,6 +55,8 @@ function AppCtrl($scope, $http, $timeout) {
 				console.log('time');
 			}, 3000);
 			
+			
+			
 		},
 		/**
 		 * Handle logging output to the console.
@@ -74,6 +76,7 @@ function AppCtrl($scope, $http, $timeout) {
 			$http.get('/data/popular.json').success(function(results) {
 				$scope.App.data = results.data;
 				console.log(results);
+				
 			});
 		},
 		/**
