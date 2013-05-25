@@ -7,9 +7,8 @@ gem 'rails', '3.2.13'
 
 
 
-gem "instagram", "~> 0.10.0"
-gem 'sqlite3'
 
+gem 'sqlite3'
 gem 'json'
 
 # Gems used only for assets and not required
@@ -40,3 +39,4 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'ruby-debug'
+gem "instagram", "~> 0.10.0"
