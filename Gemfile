@@ -5,6 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem "instagram"
 
 #gem 'pg'
 group :test do
@@ -36,6 +37,6 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-#gem 'ruby-debug'
-gem "instagram", "~> 0.10.0"
+gem 'ruby-debug'
+
 gem 'json'
