@@ -1,3 +1,52 @@
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.3/angular.min.js"></script>
+<body ng-app="ng-app" ng-controller="MainCtrl">
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="brand">banjo</a>
+        <div style="height: auto;" class="nav-collapse in collapse">
+          <div class="pull-left">
+            <div class="btn btn-inverse">Popular</div>
+            <div class="btn btn-inverse">Trending</div>
+            <div class="btn btn-inverse">Recent</div>
+          </div>
+          <div class="navbar-search pull-right">
+            <input type="text" placeholder="search" class="span3 search-query"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <section> 
+          <ul class="thumbnails tiles">
+            <li class="span3 tile">
+              <div class="tile-inner">
+                <div class="tile-img"><img src="http://media.lolwall.co/c/2013/01/instagram-in-a-nutshell_258586-612x.jpeg"/>
+                  <div class="description">
+                    <This>is a hidden description that is visible on hover.</This>
+                  </div>
+                </div>
+                <div class="meta clearfix">
+                  <div class="pull-left">
+                    <div class="username">Username</div>
+                  </div>
+                  <div class="pull-right"><a href="#"><i class="icon-comment"></i></a><a href="#"><i class="icon-heart"></i></a></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+
 <h1>Listing pages</h1>
 
 <table>

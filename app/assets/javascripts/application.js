@@ -17,9 +17,12 @@
 /**
  * App
  */
+/**
+ * App
+ */
 var App = angular.module('App', []);
 
-function MainCtrl($scope, $http){
+function AppCtrl($scope, $http){
   $scope.App = {
     build: '0.0.1',
     title: 'App',
@@ -29,6 +32,10 @@ function MainCtrl($scope, $http){
     },
     init: function(args){
       console.log(this.title, args, this, $scope);
+    },
+    //https://api.instagram.com/v1/media/popular?client_id=42af9189076c4ce7903df62e8afa2009
+    getPopular:function(){
+      
     }
   };
 }
