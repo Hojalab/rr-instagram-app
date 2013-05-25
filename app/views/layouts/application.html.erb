@@ -4,49 +4,44 @@
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/angular.min.js"></script>
-		
-		
 		<link href="/css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 		<title>R&R Instagram App</title>
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
-		
 	</head>
-	
 	<body ng-controller="AppCtrl" ng-init="App.init();">
-		
-		
-		
-		  <header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container">
-        <button type="button" data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar">
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-        </button>
-        <a href="#" class="brand">
-        	<img src="/img/logo.png"/>
-        </a>
-        <div style="height: auto;" class="nav-collapse in collapse">
-          <div class="pull-left">
-            <div class="btn btn-inverse">Popular</div>
-            <div class="btn btn-inverse">Trending</div>
-            <div class="btn btn-inverse">Recent</div>
-          </div>
-          <div class="navbar-search pull-right">
-            <input type="text" placeholder="search" class="span3 search-query"/>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  
-		
-		
-		
+		<header class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<button type="button" data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="#" class="brand">
+					<img src="/img/logo.png"/>
+					</a>
+					<div style="height: auto;" class="nav-collapse in collapse">
+						<ul class="nav pull-left">
+							<li>
+								<a href="#" class="btn btn-inverse">Popular</a>
+							</li>
+							<li>
+								<a class="btn btn-inverse">Trending</a>
+							</li>
+							<li>
+								<a class="btn btn-inverse">Recent</a>
+							</li>
+						</ul>
+						<div class="navbar-search pull-right">
+							<input type="text" placeholder="search" class="span3 search-query"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 		<%= yield %>
 	</body>
 </html>
