@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 
 
-gem 'instagram', '~> 0.10.0'
+gem 'instagram', :git => 'https://github.com/Instagram/instagram-ruby-gem.git'
 gem 'sqlite3'
 
 gem 'json'
