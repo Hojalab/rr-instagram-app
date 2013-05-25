@@ -6,13 +6,8 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-
-gem 'linecache'
-gem "instagram", "~> 0.10.0"
-gem 'json'
-
+  gem 'pg'
 group :test do
-  gem 'sqlite3'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,4 +36,6 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug'
+#gem 'ruby-debug'
+gem "instagram", "~> 0.10.0"
+gem 'json'
