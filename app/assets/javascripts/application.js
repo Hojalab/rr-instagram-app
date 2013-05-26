@@ -35,6 +35,7 @@ function AppCtrl($scope, $http, $timeout) {
 		title : 'App',
 		description : 'This is an example app',
 		loading: true,
+		current_page: 'Recent',
 		model : {
 			filters : []
 		},
@@ -47,7 +48,7 @@ function AppCtrl($scope, $http, $timeout) {
 		 * Handle initializing the application.
 		 */
 		init : function(args) {
-			this.getPopular();
+			this.getRecent();
 			console.log(this.title, args, this, $scope);
 
 		},
@@ -75,18 +76,21 @@ function AppCtrl($scope, $http, $timeout) {
 		 * https://api.instagram.com/v1/media/popular?client_id=42af9189076c4ce7903df62e8afa2009
 		 */
 		getPopular : function() {
+			this.current_page = 'Popular';
 			this.getData('popular');
 		},
 		/**
 		 * Handle getting the trending images from Instagram.
 		 */
 		getTrending : function() {
+			this.current_page = 'Trending';
 			this.getData('trending');
 		},
 		/**
 		 * Handle getting the recent images from Instagram.
 		 */
 		getRecent : function() {
+			this.current_page = 'Recent';
 			this.getData('recent');
 		},
 		/**

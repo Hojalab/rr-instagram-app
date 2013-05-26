@@ -6,7 +6,7 @@ describe "Instagram Pages" do
   describe "GET /instagram/index" do
     it "should display the index page" do
       visit '/instagram/index'
-      page.should have_content('Recent')
+      page.should have_content('Instagram')
     end
   end
   
