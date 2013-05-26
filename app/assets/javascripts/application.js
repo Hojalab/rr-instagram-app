@@ -51,9 +51,6 @@ function AppCtrl($scope, $http, $timeout) {
 			
 			console.log(this.title, args, this, $scope);
 			
-			$timeout(function(){
-				console.log('time');
-			}, 3000);
 			
 			
 			
@@ -106,4 +103,8 @@ function AppCtrl($scope, $http, $timeout) {
 
 	window.App = $scope.App;
 	//angular.element('.tip').tooltip();
+	
+			$timeout(function(){
+				console.log('time');
+			}, 300);
 }
