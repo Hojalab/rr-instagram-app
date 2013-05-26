@@ -7,6 +7,7 @@ gem 'json'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "instagram", '0.10.0'
+gem "instagram-fixed", "~> 0.8.1"
 
 
 # Dev Envoirment
