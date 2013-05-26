@@ -6,18 +6,30 @@ gem 'json'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "instagram", '~> 0.8.0'
+gem "instagram", '0.10.0'
 
 
-#SQLite database for dev
+# Dev Envoirment
 group :development, :test do
-   gem 'sqlite3'
+  gem 'sqlite3', '1.3.5'
+  gem 'rspec-rails', '2.10.0'
+  gem 'ruby-debug'
   #gem "sqlite3-ruby", "~> 1.3.7", :require => "sqlite3"
 end
+
+# Test Envoirment
 group :test do
+  gem 'capybara', '1.1.2'
 end
-# Gems used only for assets and not required
-# in production environments by default.
+
+
+# Production Enviorment
+group :production do
+  gem "pg", "~> 0.15.1"
+end
+
+
+# Gems used only for assets and not required in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -41,8 +53,3 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-# To use debugger
-gem 'ruby-debug'
-
-
