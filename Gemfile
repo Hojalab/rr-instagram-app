@@ -11,6 +11,8 @@ gem "instagram", '0.10.0'
 gem "instagram-fixed", "~> 0.8.1"
 gem 'faraday', '0.7.6'
 
+#gem 'omniauth-instagram', :git => "git://github.com/lukeholder/omniauth-instagram.git"
+#gem 'instagram', :git => "git://github.com/joshuaknox/instagram-ruby-gem.git"
 
 # Dev Envoirment
 group :development, :test do

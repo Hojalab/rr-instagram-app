@@ -65,10 +65,9 @@ function AppCtrl($scope, $http, $timeout) {
 		getPopular : function() {
 			this.log('getPopular');
 			$scope.App.data = [];
-			$http.get('/data/popular.json').success(function(results) {
-				$scope.App.data = results.data;
+			$http.get('/instagram/popular.json').success(function(results) {
+				$scope.App.data = results;
 				console.log(results);
-
 			});
 		},
 		/**
@@ -99,6 +98,9 @@ function AppCtrl($scope, $http, $timeout) {
 		search : function() {
 			this.log('search', $scope.search);
 		},
+		/**
+		 * Handle selecting a tile.
+		 */
 		selectTile : function(obj) {
 			this.selectedTile = obj;
 			console.log('selectTile', obj);
