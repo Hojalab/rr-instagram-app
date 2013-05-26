@@ -1,10 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-class @InstagramsController
+class @InstagramController
   #App = angular.module('App', ['$strap.directives', 'ui.bootstrap'])
   
-  InstagramsController = ($scope, $http, $timeout) -> 
+  InstagramController = ($scope, $http, $timeout) ->
+     
     $scope.App = 
       title: 'R&R Instagram App'
       build : '0.0.1'
@@ -19,12 +20,14 @@ class @InstagramsController
         debug : true
       init: (args) ->
         @getRecent();
-        console.log(args);
       log: (args) ->
         console.log(args);
-      getData:() ->
-        @loading = true
-        $http.get("/instagram/#{what}.json").success((data) -> @data = data);
+      getData:(what) ->
+        $scope.App.loading = true
+        $http.get("/instagram/#{what}.json").success((data) ->
+          $scope.App.loading = false 
+          $scope.App.data = data
+        );
       getRecent:() ->
         @current_page = 'Recent'
         @getData('recent')
@@ -39,3 +42,5 @@ class @InstagramsController
       selectTile: (item) ->
         @log(item);
         @selectedTile = item;
+     
+     window.App = $scope.App;
