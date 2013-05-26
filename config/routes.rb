@@ -1,6 +1,8 @@
 RrInstagramWebapp::Application.routes.draw do
   
   match "instagram" => 'instagram#index'
+  match 'instagram/trending/:latlng' => 'instagram#trending'
+  
   get "instagram/index"
   get "instagram/popular"
   get "instagram/recent"
@@ -23,8 +25,7 @@ RrInstagramWebapp::Application.routes.draw do
     # just remember to delete public/index.html.
     root :to => "home#index"
     
-    #match 'timeline/:id' => 'home#timeline'
-    #match 'public/:id' => 'home#public'
+    
     #match 'mentions/:id' => 'home#mentions'
   # The priority is based upon order of creation:
   # first created -> highest priority.

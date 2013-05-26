@@ -2,8 +2,6 @@ require 'rubygems'
 require 'bundler/setup'
 require "instagram"
 
-
-
 # All methods require authentication (either by client ID or access token).
 # To get your Instagram OAuth credentials, register an app at http://instagr.am/oauth/client/register/
 Instagram.configure do |config|
@@ -11,36 +9,44 @@ Instagram.configure do |config|
 #  config.access_token = YOUR_ACCESS_TOKEN
 end
 
+CALLBACK_URL = "http://3000/instagram/callback"
 
 class InstagramController < ApplicationController
   def index
   end
 
   def popular
-    @popular = Instagram.media_popular
-    
-     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @popular }
-      end
+    @results = Instagram.media_popular
+    respond_to do |format|
+      format.html
+      format.json { render :json => @results }
+    end
   end
 
   def recent
+    @results = Instagram.media_popular
+    respond_to do |format|
+      format.html
+      format.json { render :json => @results }
+    end
   end
 
+  # Get nearby Instagram media
   def trending
+    @results = Instagram.media_search(params[:lat], params[:lng])
+    respond_to do |format|
+      format.html
+      format.json { render :json => @results }
+    end
   end
-
 
   def authorize
-  end
-  
-   # Connect to instagram for authorization
-  def connect
     redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
   end
 
-
+  # Connect to instagram for authorization
+  def connect
+  end
 
   # Callback handler for instagram authorization
   def callback
@@ -48,7 +54,6 @@ class InstagramController < ApplicationController
     session[:access_token] = response.access_token
     redirect_to :controller => 'feed', :action => 'index'
   end
-
 
   # Instagram page for handling api calls
   def instagram

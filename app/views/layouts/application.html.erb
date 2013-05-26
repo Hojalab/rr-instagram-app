@@ -21,8 +21,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="#" class="brand">
-					<img src="/img/logo.png"/>
+					<a href="/" class="brand" title="Banjo Home">
+						<%= image_tag "logo.png" %>
 					</a>
 					<div style="height: auto;" class="nav-collapse in collapse">
 						<ul class="nav pull-left">
@@ -54,6 +54,9 @@
 			
 			<footer class="row-fluid clearfix">
 				<div class="span12">
+					<pre>
+						<%= debug(params)%>
+					</pre>
 					<p>
 						<small>Copywrite 2013 | Ban.jo</small>
 					</p>
