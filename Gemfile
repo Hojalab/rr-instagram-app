@@ -13,8 +13,7 @@ gem 'faraday', '0.7.6'
 gem 'angular-rails'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "bootstrap-rails"
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", "~> 2.2.6"
 gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
 
 #gem 'omniauth-instagram', :git => "git://github.com/lukeholder/omniauth-instagram.git"
