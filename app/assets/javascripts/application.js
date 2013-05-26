@@ -15,6 +15,7 @@
 
 //= require angular.min
 //= require bootstrap.min
+//= require jstorage
 
 //= require_tree ./angular
 //= require_tree .
