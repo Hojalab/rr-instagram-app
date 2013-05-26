@@ -1,10 +1,14 @@
 RrInstagramWebapp::Application.routes.draw do
-  resources :pages
-
   
-  #REST resources
-  resources :logs
-  resources :posts
+  match "instagram" => 'instagram#index'
+  get "instagram/index"
+  get "instagram/popular"
+  get "instagram/recent"
+  get "instagram/trending"
+  get "instagram/callback"
+  get "instagram/authorize"
+
+  resources :pages
 
   #Home page
   get "pages/index"
@@ -19,7 +23,6 @@ RrInstagramWebapp::Application.routes.draw do
     # just remember to delete public/index.html.
     root :to => "home#index"
     
-    match 'pages/:slud' => 'pages#slug'
     #match 'timeline/:id' => 'home#timeline'
     #match 'public/:id' => 'home#public'
     #match 'mentions/:id' => 'home#mentions'

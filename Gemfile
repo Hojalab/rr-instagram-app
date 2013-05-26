@@ -3,11 +3,13 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'json'
 
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "instagram", '0.10.0'
 gem "instagram-fixed", "~> 0.8.1"
+gem 'faraday', '0.7.6'
 
 
 # Dev Envoirment
