@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-<html ng-app="App">
+<html ng-app>
 	<head>
-		<!-- Required JS -->
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/angular.min.js"></script>
-		<script src="/js/angular-strap.min.js"></script>
-		<script src="/js/ui-bootstrap-0.3.0.min.js"></script>
-		<script src="/js/ui-bootstrap-tpls-0.3.0.min.js"></script>
-		
-		<!-- Plugins -->
-		<script src="/js/jstorage.js"></script>
 		
 		<!-- Styles -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet"/>
@@ -21,8 +11,19 @@
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
+		<!-- Required JS 
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/angular.min.js"></script>
+		<script src="/js/angular-strap.min.js"></script>
+		<script src="/js/ui-bootstrap-0.3.0.min.js"></script>
+		<script src="/js/ui-bootstrap-tpls-0.3.0.min.js"></script>
+			-->
+		
+		<!-- Plugins -->
+		<script src="/js/jstorage.js"></script>
 	</head>
-	<body ng-controller="AppCtrl" ng-init="App.init();">
+	<body>
 		<header class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container">

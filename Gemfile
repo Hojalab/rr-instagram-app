@@ -10,6 +10,7 @@ gem 'json'
 gem "instagram", '0.10.0'
 gem "instagram-fixed", "~> 0.8.1"
 gem 'faraday', '0.7.6'
+gem 'angular-rails'
 
 #gem 'omniauth-instagram', :git => "git://github.com/lukeholder/omniauth-instagram.git"
 #gem 'instagram', :git => "git://github.com/joshuaknox/instagram-ruby-gem.git"
@@ -30,7 +31,7 @@ end
 
 # Production Enviorment
 group :production do
-  gem "pg", "~> 0.15.1"
+  gem "pg", "0.15.1"
 end
 
 
