@@ -41,25 +41,20 @@ function AppCtrl($scope, $http, $timeout) {
 		settings : {
 			debug : true
 		},
-		selectedTile: null,
+		selectedTile : null,
 		/**
 		 * Handle initializing the application.
 		 */
 		init : function(args) {
 			this.getPopular();
-			
-			
 			console.log(this.title, args, this, $scope);
-			
-			
-			
-			
+
 		},
 		/**
 		 * Handle logging output to the console.
 		 */
-		log: function(obj){
-			if(this.settings.debug){
+		log : function(obj) {
+			if(this.settings.debug) {
 				console.log(obj);
 			}
 		},
@@ -73,38 +68,63 @@ function AppCtrl($scope, $http, $timeout) {
 			$http.get('/data/popular.json').success(function(results) {
 				$scope.App.data = results.data;
 				console.log(results);
-				
+
 			});
 		},
 		/**
 		 * Handle getting the trending images from Instagram.
 		 */
-		getTrending: function(){
+		getTrending : function() {
 			this.log('getTrending');
+			$http.get('/data/popular_2.json').success(function(results) {
+				$scope.App.data = results.data;
+				console.log(results);
+
+			});
 		},
 		/**
 		 * Handle getting the recent images from Instagram.
 		 */
-		getRecent: function(){
+		getRecent : function() {
 			this.log('getRecent');
+			$http.get('/data/popular_3.json').success(function(results) {
+				$scope.App.data = results.data;
+				console.log(results);
+
+			});
 		},
 		/**
 		 * Handle searching images from Instagram.
 		 */
-		search: function(){
+		search : function() {
 			this.log('search', $scope.search);
 		},
-		selectTile: function(obj){
+		selectTile : function(obj) {
 			this.selectedTile = obj;
 			console.log('selectTile', obj);
 		}
-		
 	};
 
 	window.App = $scope.App;
 	//angular.element('.tip').tooltip();
+
 	
-			$timeout(function(){
-				console.log('time');
-			}, 300);
 }
+
+angular.element(document).ready(function(){
+	var timeoutID;
+
+	function delayedAlert() {
+		timeoutID = window.setInterval(slowAlert, 30000);
+		
+	}
+
+	function slowAlert() {
+		console.log("That was really slow!");
+	}
+
+	function clearAlert() {
+		window.clearTimeout(timeoutID);
+	}
+	delayedAlert();
+});

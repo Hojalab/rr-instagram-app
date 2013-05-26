@@ -116,9 +116,9 @@ html, body {
 }
 .tile:hover {
 	border-color: #16b0bf;
-	-webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
-	-moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
-	box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+	-webkit-box-shadow: 0 5px 5px rgba(0, 105, 214, 0.5);
+	-moz-box-shadow: 0 5px 5px rgba(0, 105, 214, 0.5);
+	box-shadow: 1px 5px 5px rgba(0, 105, 214, 0.5);
 	opacity: 1;
 }
 .tile:hover .description {
@@ -133,11 +133,13 @@ html, body {
 	transition: opacity 600ms ease-in-out;
 	display: block;
 	position: absolute;
+	overflow: auto;
+	max-height:100px;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	background: black;
-	padding: 4px;
+	padding: 5px;
 	opacity: 0;
 }
 /* @end */
