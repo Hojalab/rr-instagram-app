@@ -20,7 +20,7 @@
 /**
  * App
  */
-var App = angular.module('App', ['$strap.directives']);
+var App = angular.module('App', ['$strap.directives', 'ui.bootstrap']);
 
 function AppCtrl($scope, $http, $timeout) {
 
@@ -34,6 +34,7 @@ function AppCtrl($scope, $http, $timeout) {
 		build : '0.0.1',
 		title : 'App',
 		description : 'This is an example app',
+		loading: true,
 		model : {
 			filters : []
 		},
@@ -59,38 +60,34 @@ function AppCtrl($scope, $http, $timeout) {
 			}
 		},
 		/**
+		 * Handle making http requests
+		 */
+		getData: function(what){
+			var self = this;
+			self.loading = true;
+			$http.get('/instagram/'+what+'.json').success(function(results) {
+				$scope.App.data = results;
+				self.loading = false;
+			});
+		},
+		/**
 		 * Handle getting the popular data from Instagram.
 		 * https://api.instagram.com/v1/media/popular?client_id=42af9189076c4ce7903df62e8afa2009
 		 */
 		getPopular : function() {
-			this.log('getPopular');
-			$scope.App.data = [];
-			$http.get('/instagram/popular.json').success(function(results) {
-				$scope.App.data = results;
-				console.log(results);
-			});
+			this.getData('popular');
 		},
 		/**
 		 * Handle getting the trending images from Instagram.
 		 */
 		getTrending : function() {
-			this.log('getTrending');
-			$http.get('/data/popular_2.json').success(function(results) {
-				$scope.App.data = results.data;
-				console.log(results);
-
-			});
+			this.getData('trending');
 		},
 		/**
 		 * Handle getting the recent images from Instagram.
 		 */
 		getRecent : function() {
-			this.log('getRecent');
-			$http.get('/data/popular_3.json').success(function(results) {
-				$scope.App.data = results.data;
-				console.log(results);
-
-			});
+			this.getData('recent');
 		},
 		/**
 		 * Handle searching images from Instagram.
@@ -110,15 +107,14 @@ function AppCtrl($scope, $http, $timeout) {
 	window.App = $scope.App;
 	//angular.element('.tip').tooltip();
 
-	
 }
 
-angular.element(document).ready(function(){
+angular.element(document).ready(function() {
 	var timeoutID;
 
 	function delayedAlert() {
 		timeoutID = window.setInterval(slowAlert, 30000);
-		
+
 	}
 
 	function slowAlert() {
@@ -128,5 +124,7 @@ angular.element(document).ready(function(){
 	function clearAlert() {
 		window.clearTimeout(timeoutID);
 	}
+
 	delayedAlert();
+
 });

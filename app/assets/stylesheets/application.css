@@ -15,15 +15,36 @@
  */
 
 /* @group Base */
-
 html, body {
 	padding-top: 40px;
 	padding-bottom: 40px;
-	background: #333333 !important;
+	background: #353535 !important;
 	color: #eee;
 }
-footer{
+#app-loader{
+	padding: 8px;
+	width: 100px;
+	margin: 25px auto;
+	display: block;
+	position: absolute;
+	top: 25px;
+	left: 45%;
+	z-index: 99999;
+}
+.hidden{
+	display: none;
+}
+.visible{
+	
+	display: block;
+}
+#content{
+	min-height: 350px;
+}
+footer p{
 	text-align: center;
+	display: block;
+	color:#888;
 }
 /* @end */
 

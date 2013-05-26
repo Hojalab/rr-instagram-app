@@ -23,7 +23,7 @@ RrInstagramWebapp::Application.routes.draw do
     #...
     # You can have the root of your site routed with "root"
     # just remember to delete public/index.html.
-    root :to => "home#index"
+    root :to => "instagram#index"
     
     
     #match 'mentions/:id' => 'home#mentions'

@@ -1,2 +1,44 @@
-<h1>Instagram#index</h1>
-<p>Find me in app/views/instagram/index.html.erb</p>
+<section>
+	
+	<ul class="thumbnails tiles">
+		<li class="span3 tile" ng-repeat="item in App.data">
+			<div class="tile-inner">
+				<div class="tile-img">
+					<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
+						<img class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
+					</a>
+					<div class="description">
+						{{item.caption.text}}
+					</div>
+				</div>
+				<div class="meta clearfix">
+					<div class="pull-left">
+						<div class="username">
+							{{item.user.username}}
+						</div>
+					</div>
+					<div class="pull-right links">
+						<a href="#" class="tip" tooltip="{{item.comments.count}}">
+							<!-- <i class="icon-comment"></i> -->
+							<img src="/img/tile-comment.png" class="icon"/>
+						</a>
+						<a href="#" class="tip" tooltip="{{item.comments.count}}">
+							<!-- <i class="icon-heart"></i> -->
+							<img src="/img/tile-heart.png" class="icon"/>
+						</a>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="modal fade hide" id="tileDetailModal">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal">×</button>
+	    <h3>{{App.selectedTile.user.username}}</h3>
+	  </div>
+	  <div class="modal-body">
+		<img ng-src="{{App.selectedTile.images.standard_resolution.url}}"/>
+	  </div>
+	</div>
+</section>
