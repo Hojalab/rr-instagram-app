@@ -9,6 +9,7 @@ RrInstagramWebapp::Application.routes.draw do
   get "instagram/trending"
   get "instagram/callback"
   get "instagram/authorize"
+  get "instagram/search"
 
   resources :pages
 

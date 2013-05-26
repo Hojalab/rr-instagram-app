@@ -14,6 +14,7 @@ CALLBACK_URL = "http://3000/instagram/callback"
 class InstagramController < ApplicationController
   def index
   end
+  
 
   def popular
     @results = Instagram.media_popular
@@ -23,6 +24,7 @@ class InstagramController < ApplicationController
     end
   end
 
+  # Get recent Instagram media
   def recent
     @results = Instagram.media_popular
     respond_to do |format|
@@ -39,13 +41,19 @@ class InstagramController < ApplicationController
       format.json { render :json => @results }
     end
   end
-
-  def authorize
-    redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
+  
+  # Search for Instagram user
+  def search
+    @results = Instagram.user_search(params[:query])
+    respond_to do |format|
+      format.html
+      format.json { render :json => @results }
+    end
   end
 
   # Connect to instagram for authorization
-  def connect
+  def authorize
+    redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
   end
 
   # Callback handler for instagram authorization
