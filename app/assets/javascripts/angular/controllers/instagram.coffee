@@ -60,7 +60,13 @@ class @InstagramController
       selectTile: (item) ->
         @log(item);
         @selectedTile = item;
-     
+      #Handle changing the image when refreshed
+      changeImage: (el, image) ->
+        angular.element(el).fadeOut('fast',(e) -> 
+          angular.element(el).find('img.pic').attr('src', image)
+          angular.element(el).fadeIn('fast')
+        )
+        
      #Handle setting on window
      window.App = $scope.App;
      

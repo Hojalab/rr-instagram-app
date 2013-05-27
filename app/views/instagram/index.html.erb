@@ -11,11 +11,11 @@
 <article class="row-fluid">
 	<section class="span12">
 		<ul class="thumbnails tiles">
-			<li class="span3 tile" ng-repeat="item in App.data.items">
+			<li class="span3 tile" ng-repeat="item in App.data.items" id="tile_{{$index}}">
 				<div class="tile-inner">
 					<div class="tile-img">
 						<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
-						<img class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url || item.profile_picture}}"/>
+							<img id="tile_{{$index}}_img" class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url || item.profile_picture}}"/>
 						</a>
 						<div class="description">
 							{{item.caption.text || item.bio}}
