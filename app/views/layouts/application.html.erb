@@ -6,7 +6,7 @@
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
 	</head>
-	<body ng-controller="InstagramController" ng-init="App.init()">
+	<body ng-controller="InstagramController" ng-init="App.init()" class="instagram-app">
 		<header class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container">
@@ -15,44 +15,57 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="brand" title="Banjo Home">
-						<%= image_tag "logo.png" %>
-					</a>
+					<a href="/" class="brand" title="Banjo Home"> <%= image_tag "logo.png" %> </a>
 					<div style="height: auto;" class="nav-collapse in collapse">
+						
 						<ul class="nav pull-left">
 							<li>
-								<a href="#" class="btn btn-inverse" ng-click="App.getPopular()">Popular</a>
+								<a href="#" class="btn btn-inverse scroll" ng-click="App.getRecent()">Recent</a>
 							</li>
 							<li>
-								<a href="#" class="btn btn-inverse" ng-click="App.getTrending()">Trending</a>
+								<a href="#" class="btn btn-inverse scroll" ng-click="App.getPopular()">Popular</a>
 							</li>
 							<li>
-								<a href="#" class="btn btn-inverse" ng-click="App.getRecent()">Recent</a>
+								<a href="#" class="btn btn-inverse scroll" ng-click="App.getTrending()">Trending</a>
 							</li>
 						</ul>
-						<div class="navbar-search pull-right">
-							<form ng-submit="App.search();">
-								<input type="text" placeholder="search" class="span2 search-query" ng-model="search" ng-change="App.search();"/>
+						
+						
+						<div class="navbar-search">
+							<form class="form-search" ng-submit="App.search();" style="position: relative;">
+								<div class="input-prepend">
+									<button type="submit" class="btn btn-inverse btn-search">
+										<i class="icon-search icon-white"></i>
+									</button>
+									<input type="text" placeholder="SEARCH" class="span2 search-query" ng-model="App.model.query"/>
+								</div>
 							</form>
 						</div>
+						
+						<div class="pull-right">
+							<span id="app-loader">
+									<span ng-show="App.loading">
+										<%= image_tag 'ajax-loader.gif'%>
+									</span>
+								</span>
+						</div>
+						
 					</div>
 				</div>
 			</div>
 		</header>
 		<div class="container-fluid">
 			<div id="content" class="row-fluid">
-				<div class="span12" style="position: relative;">
-					<div id="app-loader" ng-show="App.loading">
-						<%= image_tag 'loading.gif'%>
-					</div>
+				<div class="span12">
 					<%= yield %>
 				</div>
 			</div>
-			
 			<footer id="footer" class="row-fluid clearfix">
 				<div class="span12">
 					<p>
-						<small>Copywrite 2013 | Ban.jo</small>
+						<small>
+							Copywrite &copy; 2013 | {{App.data.timestamp | date:'medium'}}
+						</small>
 					</p>
 				</div>
 			</footer>

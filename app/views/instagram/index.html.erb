@@ -1,39 +1,87 @@
-<h1 class="hidden">Instagram <span>{{App.current_page}}</span></h1>
-<section>
-	<ul class="thumbnails tiles">
-		<li class="span3 tile" ng-repeat="item in App.data">
-			<div class="tile-inner">
-				<div class="tile-img">
-					<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
-					<img class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
-					</a>
-					<div class="description">
-						{{item.caption.text}}
-					</div>
-				</div>
-				<div class="meta clearfix">
-					<div class="pull-left">
-						<div class="username">
-							{{item.user.username}}
+<!--ul class="breadcrumb">
+<li><a href="/">Home</a> <span class="divider">/</span></li>
+<li><a href="/instagram">Instagram</a> <span class="divider">/</span></li>
+<li class="active">{{App.current_page}}</li>
+</ul-->
+<div class="page-header hidden">
+	<span class="pull-right"> <small>
+			{{App.data.timestamp | date:'medium'}}</small> </span>
+	<h1>Instagram <span>{{App.current_page}}</span></h1>
+</div>
+<article class="row-fluid">
+	<section class="span12">
+		<ul class="thumbnails tiles">
+			<li class="span3 tile" ng-repeat="item in App.data.items">
+				<div class="tile-inner">
+					<div class="tile-img">
+						<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
+						<img class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url || item.profile_picture}}"/>
+						</a>
+						<div class="description">
+							{{item.caption.text || item.bio}}
 						</div>
 					</div>
-					<div class="pull-right links">
-						<a href="#" class="tip" tooltip="{{item.comments.count}}"> <%= image_tag 'tile-comment.png' %> </a>
-						<a href="#" class="tip" tooltip="{{item.comments.count}}"> <%= image_tag 'tile-heart.png' %> </a>
+					<div class="meta clearfix">
+						<div class="pull-left">
+							<div class="username">
+								{{item.user.username || item.username}}
+							</div>
+						</div>
+						<div class="pull-right links">
+							<a href="#" class="tip" tooltip="{{item.comments.count}}"> <%= image_tag 'tile-comment.png' %> </a>
+							<a href="#" class="tip" tooltip="{{item.comments.count}}"> <%= image_tag 'tile-heart.png' %> </a>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<!--div class="pagination pagination-centered">
+		<ul>
+		<li class="disabled">
+		<a href="#">&laquo;</a>
+		</li>
+		<li class="active">
+		<a href="#">1</a>
+		</li>
+		</ul>
+		</div-->
+		<div class="modal fade hide" id="tileDetailModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					×
+				</button>
+				<h3>{{App.selectedTile.user.username || App.selectedTile.username}}</h3>
+			</div>
+			<div class="modal-body">
+				<img ng-show="App.selectedTile.images.standard_resolution.url" ng-src="{{App.selectedTile.images.standard_resolution.url}}"/>
+				<div class="row-fluid" ng-show="App.selectedTile.profile_picture">
+					<div class="span4">
+						<img ng-src="{{App.selectedTile.images.standard_resolution.url || App.selectedTile.profile_picture}}"/>
+					</div>
+					<div class="span8">
+						<dl class="dl-vertical">
+							<dt ng-show="App.selectedTile.full_name">
+								Name:
+							</dt>
+							<dd>
+								{{App.selectedTile.full_name}}
+							</dd>
+							<dt ng-show="App.selectedTile.website">
+								Website:
+							</dt>
+							<dd>
+								<a href="{{App.selectedTile.website}}" target="_blank">{{App.selectedTile.website}}</a>
+							</dd>
+							<dt ng-show="App.selectedTile.bio">
+								Bio:
+							</dt>
+							<dd>
+								{{App.selectedTile.bio}}
+							</dd>
+						</dl>
 					</div>
 				</div>
 			</div>
-		</li>
-	</ul>
-	<div class="modal fade hide" id="tileDetailModal">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">
-				×
-			</button>
-			<h3>{{App.selectedTile.user.username}}</h3>
 		</div>
-		<div class="modal-body">
-			<img ng-src="{{App.selectedTile.images.standard_resolution.url}}"/>
-		</div>
-	</div>
-</section>
+	</section>
+</article>

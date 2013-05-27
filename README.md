@@ -4,8 +4,7 @@ This is an example Ruby on Rails webapp using the Instagram API.
 
 
 ## Summary
-Using Instagram's popular media API (http://instagram.com/developer/endpoints/media/#get_media_popular) 
-create a website that shows popular images in a grid that refreshes automatically.
+Using Instagram's popular media API (http://instagram.com/developer/endpoints/media/#get_media_popular), this webapp shows popular images in a grid that refreshes automatically.
 
 ### The app should:
 * Refresh images individually after 30 seconds using an animation of choice
