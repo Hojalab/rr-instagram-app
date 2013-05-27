@@ -33,12 +33,14 @@ class @InstagramController
         console.log(args);
       #Handle making ajax calls to backend
       getData:(what, params) ->
+        self = @
         $scope.App.loading = true
         $http.get("/instagram/#{what}.json", {params: params}).success((data) ->
           $scope.App.loading = false
            
           $scope.App.data.timestamp = new Date()
           $scope.App.data.items = data
+          #$timeout($scope.App.changeAllImages, 1000);
         );
       #Handle getting recent images
       getRecent:() ->
@@ -60,11 +62,25 @@ class @InstagramController
       selectTile: (item) ->
         @log(item);
         @selectedTile = item;
+        
+      #Handle hidding each image one by one
+      changeAllImages: () ->
+        self = @;
+        angular.forEach( $scope.App.data.items, (item, index) ->
+            self.changeImage(index, item.images.low_resolution.url);
+            console.log(item, index);
+          )
+        
+      #Handle showing each image one by one 
+      showAllImages: () ->
+        
+        
       #Handle changing the image when refreshed
       changeImage: (el, image) ->
-        angular.element(el).fadeOut('fast',(e) -> 
-          angular.element(el).find('img.pic').attr('src', image)
-          angular.element(el).fadeIn('fast')
+        element = angular.element("#tile_#{el}").find('img.pic');
+        element.fadeOut('slow',() ->
+          element.attr('src', image)
+          element.fadeIn('slow')
         )
         
      #Handle setting on window
