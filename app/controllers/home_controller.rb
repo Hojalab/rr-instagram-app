@@ -1,21 +1,20 @@
 class HomeController < ApplicationController
   
   
-  # Home index page
+  # Handle displaying the home page with an overview of this webapp.
   def index
-    
-    #render error if result. ...
-
-    #@pages = Page.all
-    #@popular = Instagram.media_popular;
-
-    # Get a list of the overall most popular media items
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @popular }
     end
   end
 
+
+  # Handle displaying the about page with information about this webapp
+  def about
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
 
  
 end

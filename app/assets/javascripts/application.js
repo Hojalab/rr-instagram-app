@@ -17,6 +17,7 @@
 //= require bootstrap.min
 //= require jstorage
 //= require jquery.isotope.min
+//= require instagram-js/ig-min
 
 //= require_tree ./angular
 //= require_tree .

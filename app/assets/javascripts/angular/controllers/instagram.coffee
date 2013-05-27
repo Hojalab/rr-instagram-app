@@ -11,11 +11,13 @@ class @InstagramController
       build : '0.0.2'
       description : 'Using Instagram\'s popular media API (http://instagram.com/developer/endpoints/media/#get_media_popular), this webapp shows popular images in a grid that refreshes automatically.'
       data : 
-         timestamp: new Date()
-         items: null
+        timestamp: new Date()
+        items: null
       selectedTile: null
-      loading: true
+      loading: false
       current_page: 'Recent'
+      user: 
+        access_token: null
       model : 
         filters : []
         query: null
@@ -31,6 +33,8 @@ class @InstagramController
         
         @initIsotope()
         @getRecent()
+        @Instagram.init('42af9189076c4ce7903df62e8afa2009', 'http://jonniespratley.me:3000/instagram/callback')
+        
    
       #Handle loggin to the console
       log: (args) ->
@@ -103,7 +107,38 @@ class @InstagramController
           element.attr('src', image)
           element.fadeIn('slow')
         )
+      
+      #============ INSTAGRAM API ==============
+      Instagram:
+        client_id: '42af9189076c4ce7903df62e8afa2009'
+        client_secret: '5690ec482a8f4f818daf898065ecc1c7'
+        redirect_uri: 'http://jonniespratley.me:3000/instagram/callback'
+        code: null
+        access_token: null
+        auth_url: null
         
+        #Handle initializing Instagram API
+        init: (client_id, redirect_uri) ->
+          $scope.App.Instagram.client_id = client_id
+          $scope.App.Instagram.redirect_uri = redirect_uri
+      
+        #Handle authenticate a user
+        authorize: () ->
+          url = "https://instagram.com/oauth/authorize/?client_id=#{$scope.App.Instagram.client_id}&redirect_uri=#{$scope.App.Instagram.redirect_uri}&response_type=token"
+          window.location = url
+          console.log(url)
+        
+        #Handle getting the access_token from the url
+        checkAccessToken: () ->
+          hash_value = window.location.hash.split('=') if window.location.hash
+          @saveAccessToken(hash_value[1]) if hash_value
+        
+        #Handle saving access token to storage
+        saveAccessToken: (token) ->
+          $scope.App.Instagram.access_token = token
+          console.log(token)
+       
+       
      #Handle setting on window
      window.App = $scope.App;
      

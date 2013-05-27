@@ -14,7 +14,7 @@
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
 	</head>
-	<body ng-controller="InstagramController" ng-init="App.init()" class="instagram-app">
+	<body ng-controller="InstagramController" class="instagram-app">
 		<header class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container">
@@ -71,6 +71,7 @@
 			</div>
 			<footer id="footer" class="row-fluid clearfix">
 				<div class="span12">
+					<%= debug(params)%>
 					<p>
 						<small>
 							Copywrite &copy; 2013 | {{App.data.timestamp | date:'medium'}}

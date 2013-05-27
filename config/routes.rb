@@ -1,5 +1,10 @@
 RrInstagramWebapp::Application.routes.draw do
   
+  match "home" => 'home#index'
+  match "home/index" => 'home#index'
+  match "home/about" => 'home#about'
+  
+  
   match "instagram" => 'instagram#index'
   match 'instagram/trending/:latlng' => 'instagram#trending'
   
@@ -14,7 +19,6 @@ RrInstagramWebapp::Application.routes.draw do
   resources :pages
 
   #Home page
-  get "pages/index"
   get "home/index"
   
 

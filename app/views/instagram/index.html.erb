@@ -8,7 +8,7 @@
 			{{App.data.timestamp | date:'medium'}}</small> </span>
 	<h1>Instagram <span>{{App.current_page}}</span></h1>
 </div>
-<article class="row-fluid">
+<article class="row-fluid" ng-init="App.init()">
 	<section class="span12">
 		
 		<div id="tile-grid" class="hidden">
