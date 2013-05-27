@@ -31,11 +31,35 @@ angular.module('App')
 					</div>
 				</div>
 				<div class='pull-right links'>
-					<a href='#' rel='tooltip' data-title='{{comments}}'> </a>
-					<a href='#' rel='tooltip' data-title='{{likes}}'> </a>
+					<a href='#' rel='tooltip' data-title='{{comments}}'>
+						<img src='assets/tile-comment.png'/>
+					</a>
+					<a href='#' rel='tooltip' data-title='{{likes}}'>
+						<img src='assets/tile-heart.png'/>
+					</a>
 				</div>
 			</div>
 		</div>"
 	link: (scope, element, attrs) ->
+		oldValue = ''
+		newValue = ''
+		
 		#element.text 'this is the BanjoTile directive'
+		#console.log(element, attrs)
+		
+		#set the initial value of the textbox
+		angular.element(element).data('image', scope.image);
+
+		#detect outside changes and update our input
+		scope.$watch('image', (value) ->
+			oldValue = value
+			#console.log('old value = ' + oldValue)
+		);
+		
+		#observe changes to interpolated attribute
+		attrs.$observe('image', (value) ->
+			newValue = value
+			#console.log('new value = ' + newValue)
+			element.find('img').fadeOut().fadeIn();
+		);
 	)
