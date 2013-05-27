@@ -29,13 +29,13 @@ end
 
 # Test Envoirment
 group :test do
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
 end
 
 
 # Production Enviorment
 group :production do
-  gem "pg", "0.15.1"
+  gem "pg"
 end
 
 
@@ -59,7 +59,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+ gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
