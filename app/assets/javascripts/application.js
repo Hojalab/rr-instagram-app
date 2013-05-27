@@ -16,7 +16,21 @@
 //= require angular.min
 //= require bootstrap.min
 //= require jstorage
+//= require jquery.isotope.min
 
 //= require_tree ./angular
 //= require_tree .
-
+// 
+// $scope.init = function() {
+	// $('#container').isotope({
+		// itemSelector : '.item',
+		// layoutMode : 'fitRows'
+	// });
+	// $scope.timeid = $timeout($scope.addIsotope, 5000);
+// };
+// 
+// $scope.addIsotope = function() {
+	// var $newItems = $('<div class="item"><img src="http://placehold.it/100x100&text=1"/></div>');
+	// $('#container').append($newItems).isotope('addItems', $newItems);
+	// $scope.init();
+// };

@@ -21,23 +21,27 @@ class @InstagramController
         query: null
       settings :
         debug : true
+      #Timeout reference
+      timeoutid: null
       #Handle initializing the application
       init: (args) ->
         setInterval(() -> 
           $scope.App.getRecent()
         30000)
-        @getRecent()
         
+        @initIsotope()
+        @getRecent()
+   
       #Handle loggin to the console
       log: (args) ->
         console.log(args);
+        
       #Handle making ajax calls to backend
       getData:(what, params) ->
         self = @
         $scope.App.loading = true
         $http.get("/instagram/#{what}.json", {params: params}).success((data) ->
           $scope.App.loading = false
-           
           $scope.App.data.timestamp = new Date()
           $scope.App.data.items = data
           #$timeout($scope.App.changeAllImages, 1000);
@@ -74,6 +78,21 @@ class @InstagramController
       #Handle showing each image one by one 
       showAllImages: () ->
         
+           
+      #Handle initializing isotope plugin
+      initIsotope: ->
+        
+        angular.element('#tile-grid').isotope({
+          itemSelector: '.item'
+          layoutMode: 'fitRows'
+        });  
+        
+        
+      #Handle adding a image to the grid
+      addImage: (img) ->
+        $newItems = angular.element('<div class="item"><img src="http://placehold.it/200x200&text=1"/></div>');
+        angular.element('#tile-grid').append($newItems).isotope('addItems', $newItems);
+        #@initIsotope()
         
       #Handle changing the image when refreshed
       changeImage: (el, image) ->
