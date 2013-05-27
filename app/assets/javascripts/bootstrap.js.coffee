@@ -9,6 +9,3 @@ jQuery ->
       scrollTop : $('#content').top - 50
     }, 'slow');
   );
-    
-    
-    

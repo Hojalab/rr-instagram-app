@@ -25,6 +25,19 @@
 		
 		<ul class="thumbnails tiles">
 			<li class="span3 tile" ng-repeat="item in App.data.items" id="tile_{{$index}}">
+				
+				<!-- @TODO: [Banjo Tile Directive] -->
+				<banjo-tile id="{{item.id}}" 
+					index="{{$index}}" 
+					image="{{item.images.low_resolution.url || item.profile_picture}}" 
+					description="{{item.caption.text || item.bio}}" 
+					username="{{item.user.username || item.username}}" 
+					comments="" 
+					click="App.selectTile(item);"
+					likes="">
+				</banjo-tile>
+				<!--
+
 				<div class="tile-inner">
 					<div class="tile-img">
 						<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
@@ -42,10 +55,11 @@
 						</div>
 						<div class="pull-right links">
 							<a href="#" class="tip" tooltip="{{item.comments.count}}"> <%= image_tag 'tile-comment.png' %> </a>
-							<a href="#" class="tip" tooltip="{{item.comments.count}}"> <%= image_tag 'tile-heart.png' %> </a>
+							<a href="#" class="tip" tooltip="{{item.likes.count}}"> <%= image_tag 'tile-heart.png' %> </a>
 						</div>
 					</div>
 				</div>
+				-->
 			</li>
 		</ul>
 		<!--div class="pagination pagination-centered">
