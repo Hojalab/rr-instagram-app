@@ -35,7 +35,8 @@ class InstagramController < ApplicationController
 
   # Get nearby Instagram media
   def trending
-    @results = Instagram.media_search(params[:lat], params[:lng])
+    #@results = Instagram.media_search(params[:lat], params[:lng])
+    @results = Instagram.media_popular
     respond_to do |format|
       format.html
       format.json { render :json => @results }
