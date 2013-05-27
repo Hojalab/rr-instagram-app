@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.2.13'
 gem 'json'
 
 
@@ -29,13 +29,13 @@ end
 
 # Test Envoirment
 group :test do
-  gem 'capybara'
+  gem 'capybara', '1.1.2'
 end
 
 
 # Production Enviorment
 group :production do
-  gem "pg"
+  gem "pg", "0.15.1"
 end
 
 
