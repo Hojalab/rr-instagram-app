@@ -44,6 +44,7 @@ class @InstagramController
           $scope.App.loading = false
           $scope.App.data.timestamp = new Date()
           $scope.App.data.items = data
+          $scope.App.changeAllImages()
           #$timeout($scope.App.changeAllImages, 1000);
         );
       #Handle getting recent images
@@ -92,6 +93,7 @@ class @InstagramController
       addImage: (img) ->
         $newItems = angular.element('<div class="item"><img src="http://placehold.it/200x200&text=1"/></div>');
         angular.element('#tile-grid').append($newItems).isotope('addItems', $newItems);
+        angular.element('#tile-grid').isotope('reloadItems');
         #@initIsotope()
         
       #Handle changing the image when refreshed
