@@ -46,7 +46,7 @@ html, body {
     }
     .nav
       .btn {
-        margin-top: 10px !important;
+        
         padding: 5px 20px !important;
         margin-left: 20px;
         border-radius: 10px;
@@ -81,7 +81,7 @@ html, body {
       margin-top: 25px;
     }
     .navbar-search {
-      margin-top: 10px;
+      //padding-top: 5px;
       margin-left: 55px; 
     }
     input.search-query {
@@ -112,18 +112,19 @@ html, body {
       border: 1px solid #777777;
       border-radius: 5px;
       background: #434242;
+      max-height:280px;
       color: white;
-      opacity: .8;
+      opacity: .6;
        &:hover {
         border-color: #16b0bf;
-        -webkit-box-shadow: 0 5px 5px rgba(0, 105, 214, 0.5);
-        -moz-box-shadow: 0 5px 5px rgba(0, 105, 214, 0.5);
-        box-shadow: 1px 5px 5px rgba(0, 105, 214, 0.5);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 105, 214, 0.3);
+        -moz-box-shadow: 0 2px 5px rgba(0, 105, 214, 0.3);
+        box-shadow: 0px 2px 5px rgba(0, 105, 214, 0.3);
         opacity: 1;
         .tile-inner{
           .description {
             display: block;
-            opacity: 0.7;
+            opacity: 0.8;
           }
         }
       }
@@ -162,7 +163,7 @@ html, body {
         }
         .meta {
           .username {
-            font-size: 12px;
+            //font-size: 12px;
           }
           i {
             margin-left: 25px;
