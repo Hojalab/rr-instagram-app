@@ -1,7 +1,6 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/    
-class @InstagramController
-	InstagramController = ($scope, $http, $timeout) ->
-		
-	
+App.controller 'InstagramCtrl', ['$scope', 'InstagramApi', ($scope, InstagramApi) ->
+  $scope.images = InstagramApi.query()
+]
