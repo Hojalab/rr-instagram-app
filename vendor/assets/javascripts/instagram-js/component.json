@@ -1,0 +1,9 @@
+{
+  "name": "instagram-js",
+  "version": "0.0.0",
+  "commit": "996b00ee82c335f220e5fa6981c6d358bb8b6e86",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Instagram/instagram-javascript-sdk.git"
+  }
+}
