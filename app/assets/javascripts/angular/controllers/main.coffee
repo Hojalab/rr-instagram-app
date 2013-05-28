@@ -1,5 +1,5 @@
 angular.module('App')
-  .controller 'MainCtrl', ($rootScope, $scope, $http, $timeout) ->
+  .controller 'MainCtrl', ($rootScope, $scope, $http, $timeout, $compile) ->
     
     $scope.App = 
       title: 'R&R Instagram App'
@@ -33,13 +33,13 @@ angular.module('App')
         console.log(args);
         
       #Handle making ajax calls to backend
-      getData:(what, params) ->
+      getData:(what, params, callback) ->
         self = @
         $scope.App.loading = true
         $http.get("/instagram/#{what}.json", {params: params}).success((data) ->
           $scope.App.loading = false
           $scope.App.data.timestamp = new Date()
-          
+          callback(data) if callback
           angular.forEach( data, (item, index) ->
             $scope.App.data.items = data if $scope.App.data.items.length is 0;
             
@@ -58,7 +58,9 @@ angular.module('App')
       #Handle getting recent images
       getRecent:() ->
         @current_page = 'Recent'
-        @getData('recent')
+        @getData('recent', null, (data)->
+            
+        )
       #Handle getting popular images
       getPopular: () ->
         @current_page = 'Popular'
@@ -74,14 +76,14 @@ angular.module('App')
       #Handle when tile is selected
       selectTile: (item) ->
         @log(item);
-        @selectedTile = item;
+        @selectedTile = item
         
       #Handle hidding each image one by one
       changeAllImages: () ->
         self = @;
         angular.forEach( $scope.App.data.items, (item, index) ->
-            self.changeImage(index, item.images.low_resolution.url);
-            console.log(item, index);
+            self.changeImage(index, item.images.low_resolution.url)
+            console.log(item, index)
           )
         
       #Handle showing each image one by one 
@@ -99,16 +101,18 @@ angular.module('App')
         
       #Handle adding a image to the grid
       addItem: (item) ->
-        html = "<div class='item'><img src='http://placehold.it/200x200&text=1'/></div>";
+        html = angular.element('#tmpl_banjo_tile').clone()
         
-        $newItems = angular.element(html);
-        angular.element('#tile-grid').append($newItems).isotope('addItems', $newItems);
-        angular.element('#tile-grid').isotope('reloadItems');
+        $newItems = angular.element(html)
+        $newItems.removeClass('hidden')
+        angular.element('#tile-grid').append($newItems).isotope('addItems', $newItems)
+        angular.element('#tile-grid').isotope('reloadItems')
         @initIsotope()
+        
         
       #Handle changing the image when refreshed
       changeImage: (el, image) ->
-        element = angular.element("#tile_#{el}").find('img.pic');
+        element = angular.element("#tile_#{el}").find('img.pic')
         element.fadeOut('slow',() ->
           element.attr('src', image)
           element.fadeIn('slow')
@@ -181,7 +185,9 @@ angular.module('App')
             liked: null
           #Get basic information about a user.
           getInfo: () ->
-           
+             $scope.App.Instagram.Api.call('/users/#{$scope.App.Instagram.current_user.id}', null, (data) ->
+              $scope.App.Instagram.User.data.info = data 
+             )
           #See the authenticated user's feed.
           getFeed: () ->
             $scope.App.Instagram.Api.call('/users/self/feed', null, (data) ->
@@ -190,6 +196,7 @@ angular.module('App')
           #Get the most recent media published by a user.
           getRecent: () ->
              $scope.App.Instagram.Api.call('/users/self/media/recent', null, (data) ->
+              $scope.App.Instagram.current_user = data.data[0].user 
               $scope.App.Instagram.User.data.feed = data 
              ) 
           #See the authenticated user's list of media they've liked.
@@ -199,4 +206,4 @@ angular.module('App')
           search: (q) ->
             
             
-    window.App = $scope.App;
+    window.App = $scope.App

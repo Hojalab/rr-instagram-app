@@ -15,34 +15,22 @@
 			</div>
 			<article class="row-fluid" ng-init="App.init()">
 				<section class="span12">
-					<div id="tile-grid" class="hidden">
-						<!-- @TODO: [Banjo Tile Directive] -->
-						<div id="tmpl_banjo_tile" class="item">
-							<div class="tile">
-								<div class="tile-inner">
-									<div class="tile-img">
-										<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
-										<img id="tile_{{$index}}_img" class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
-										</a>
-										<div class="description">
-											{{item.caption.text}}
-										</div>
-									</div>
-									<div class="meta clearfix">
-										<div class="pull-left">
-											<div class="username">
-												{{item.user.username}}
-											</div>
-										</div>
-										<div class="pull-right links">
-											<a href="#" class="tip" tooltip="{{item.comments.count}}"> <%= image_tag 'tile-comment.png' %> </a>
-											<a href="#" class="tip" tooltip="{{item.likes.count}}"> <%= image_tag 'tile-heart.png' %> </a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div id="tile-grid" class="tiles" style="min-height: 500px;">
+						
 					</div>
+					
+					<div class="pagination pagination-centered">
+						<ul>
+			                <li class="disabled"><a href="#">«</a></li>
+			                <li class="active"><a href="#">1</a></li>
+			                <li><a href="#">2</a></li>
+			                <li><a href="#">3</a></li>
+			                <li><a href="#">4</a></li>
+			                <li><a href="#">5</a></li>
+			                <li><a href="#">»</a></li>
+			             </ul>
+			            </div>
+					
 					<ul class="thumbnails tiles">
 						<li class="span3 tile" ng-repeat="item in App.data.items" id="tile_{{$index}}">
 							<!-- @TODO: [Banjo Tile Directive] -->
@@ -57,16 +45,10 @@
 							<!---->
 						</li>
 					</ul>
-					<!--div class="pagination pagination-centered">
-					<ul>
-					<li class="disabled">
-					<a href="#">&laquo;</a>
-					</li>
-					<li class="active">
-					<a href="#">1</a>
-					</li>
-					</ul>
-					</div-->
+					
+					
+					
+					<!-- @TODO: [Tile Details] -->
 					<div class="modal fade hide" id="tileDetailModal">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">
@@ -105,6 +87,96 @@
 							</div>
 						</div>
 					</div>
+
+
+					<!-- @TODO: [User Details] -->	
+					<a class="btn" data-toggle="modal" href="#userDetailModal" >User Detail</a>
+
+					<div class="modal hide fade" id="userDetailModal">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal">×</button>
+					    <h3>User Detail</h3>
+					  </div>
+					  <div class="modal-body">
+						<pre>{{App.selectedTile.user | json}}</pre>
+					  </div>
+					  <div class="modal-footer">
+					    <a href="#" class="btn" data-dismiss="modal">Close</a>
+					  </div>
+					</div>
+
+
+					<!-- @TODO: [Comment Details] -->
+
+
+					<div class="modal hide fade" id="commentDetailModal">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal">×</button>
+					    <h3> {{App.selectedTile.comments.count}} Comments</h3>
+					  </div>
+					  <div class="modal-body">
+
+						<div class="media" ng-repeat="comment in App.selectedTile.comments.data">
+						  <a class="pull-left" href="#">
+						    <img class="media-object" src="http://placehold.it/64x64" ng-src="{{comment.from.profile_picture}}" style="height:64px;">
+						  </a>
+						  <div class="media-body">
+						    <h4 class="media-heading">{{comment.from.username}}</h4>
+						    <p>{{comment.text}}</p>
+						  </div>
+						</div>
+					  </div>
+					  <div class="modal-footer">
+					    <a href="#" class="btn" data-dismiss="modal">Close</a>
+					  </div>
+					</div>
+					
+					<!-- @TODO: [Like Details] -->
+					<div class="modal hide fade" id="likesDetailModal">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal">×</button>
+					    <h3>Likes</h3>
+					  </div>
+					  <div class="modal-body">
+					    <pre>{{App.selectedTile.likes | json}}</pre>
+					  </div>
+					  <div class="modal-footer">
+					    <a href="#" class="btn" data-dismiss="modal">Close</a>
+					  </div>
+					</div>
+
+
+					<!-- Tile Template -->
+						<!-- @TODO: [Banjo Tile Directive] -->
+						
+							<div id="tmpl_banjo_tile" class="item hidden">
+							<div class="tile">
+								<div class="tile-inner">
+									<div class="tile-img">
+										<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
+										<img id="tile_{{$index}}_img" class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
+										</a>
+										<div class="description">
+											{{item.caption.text}}
+										</div>
+									</div>
+									<div class="meta clearfix">
+										<div class="pull-left">
+											<div class="username">
+												{{item.user.username}}
+											</div>
+										</div>
+										<div class="pull-right links">
+											<a data-toggle="modal" href="#commentDetailModal"> <%= image_tag 'tile-comment.png' %> </a>
+											<a data-toggle="modal" href="#likesDetailModal"> <%= image_tag 'tile-heart.png' %> </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<script type="text/ng-template">
+						</script>
+
 				</section>
 			</article>
 		</div>

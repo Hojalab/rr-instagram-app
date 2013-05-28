@@ -11,6 +11,7 @@
 		<title>R&R Instagram App</title>
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= csrf_meta_tags %>
+		<%= javascript_include_tag "application" %>
 	</head>
 	<body ng-controller="MainCtrl" class="instagram-app">
 		<a href="https://github.com/jonniespratley/rr-instagram-app" class="hidden">
@@ -29,13 +30,13 @@
 					<div style="height: auto;" class="nav-collapse in collapse">
 						<ul class="nav">
 							<li>
-								<a href="" class="btn btn-inverse scroll" ng-click="App.getRecent()">Recent</a>
+								<a href="#/instagram/recent" class="btn btn-inverse scroll">Recent</a>
 							</li>
 							<li>
-								<a href="" class="btn btn-inverse scroll" ng-click="App.getPopular()">Popular</a>
+								<a href="#/instagram/popular" class="btn btn-inverse scroll">Popular</a>
 							</li>
 							<li>
-								<a href="" class="btn btn-inverse scroll" ng-click="App.getTrending()">Trending</a>
+								<a href="#/instagram/trending" class="btn btn-inverse scroll">Trending</a>
 							</li>
 						</ul>
 						<div class="navbar-search">
@@ -85,6 +86,6 @@
 					</p>
 				</div>
 			</footer>
-		<%= javascript_include_tag "application" %>
+	
 	</body>
 </html>
