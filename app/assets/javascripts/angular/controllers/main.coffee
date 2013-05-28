@@ -145,6 +145,7 @@ angular.module('App')
           window.sessionStorage.setItem('App.Instagram.options.access_token', token) if window.sessionStorage
           $scope.App.Instagram.options.access_token = token
           console.log(token)
+          window.location = '/instagram/user'
   
         #Handle getting the access token from session storage.
         getAccessToken: () ->
