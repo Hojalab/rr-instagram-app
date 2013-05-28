@@ -49,16 +49,22 @@
 							</form>
 						</div>
 						<div class="pull-right">
-							<div class="btn-group">
+							
+							<a class="btn btn-inverse" href="#" ng-hide="App.Instagram.user" ng-click="App.Instagram.authorize()">
+								<i class="icon-lock icon-white"></i>	Authorize
+							</a> 
+							<div class="btn-group" ng-show="App.Instagram.user">								
 								<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"> 
-									<img src="https://secure.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" class="avatar">
-									<span class="username">jonniespratley</span>
-									<span class="caret"></span> </a>
+									<img src="{{App.Instagram.user.profile_picture}}" class="avatar">
+									<span class="username">{{App.Instagram.user.username}}</span>
+									<span class="caret"></span> 
+								</a>
 								<ul class="dropdown-menu">
 									<li><a href="/instagram/user">Profile</a></li>
 									<li><a href="/instagram/settings">Settings</a></li>
 								</ul>
 							</div>
+							
 							<span class="spacer"></span>
 							<span id="app-loader"> <span ng-show="App.loading"> <%= image_tag 'ajax-loader.gif'%> </span> </span>
 						</div>
