@@ -7,7 +7,7 @@ angular.module('App')
       description : 'Using Instagram\'s popular media API (http://instagram.com/developer/endpoints/media/#get_media_popular), this webapp shows popular images in a grid that refreshes automatically.'
       data : 
         timestamp: new Date()
-        items: null
+        items: []
       selectedTile: null
       loading: false
       current_page: 'Recent'
@@ -39,8 +39,20 @@ angular.module('App')
         $http.get("/instagram/#{what}.json", {params: params}).success((data) ->
           $scope.App.loading = false
           $scope.App.data.timestamp = new Date()
-          $scope.App.data.items = data
-          $scope.App.changeAllImages()
+          
+          angular.forEach( data, (item, index) ->
+            $scope.App.data.items = data if $scope.App.data.items.length is 0;
+            
+            #Append to array
+            #$scope.App.data.items.push(item);
+            
+            #Extend each item into eachother
+            $scope.App.data.items[index] = angular.copy(item);
+            
+            console.log(item, index);
+          )
+          
+          #$scope.App.changeAllImages()
           #$timeout($scope.App.changeAllImages, 1000);
         );
       #Handle getting recent images
@@ -86,11 +98,13 @@ angular.module('App')
         
         
       #Handle adding a image to the grid
-      addImage: (img) ->
-        $newItems = angular.element('<div class="item"><img src="http://placehold.it/200x200&text=1"/></div>');
+      addItem: (item) ->
+        html = "<div class='item'><img src='http://placehold.it/200x200&text=1'/></div>";
+        
+        $newItems = angular.element(html);
         angular.element('#tile-grid').append($newItems).isotope('addItems', $newItems);
         angular.element('#tile-grid').isotope('reloadItems');
-        #@initIsotope()
+        @initIsotope()
         
       #Handle changing the image when refreshed
       changeImage: (el, image) ->
