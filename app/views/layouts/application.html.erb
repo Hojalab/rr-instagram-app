@@ -2,20 +2,20 @@
 <html ng-app="App">
 	<head>
 		<meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <meta name="fragment" content="#" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="RRInsta"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta name="fragment" content="#" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="RRInsta"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>R&R Instagram App</title>
-		<%= stylesheet_link_tag    "application", :media => "all" %>		
+		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= csrf_meta_tags %>
-		 
 	</head>
 	<body ng-controller="MainCtrl" class="instagram-app">
-		<a href="https://github.com/jonniespratley/rr-instagram-app"><img style="position: absolute; z-index:99999; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+		<a href="https://github.com/jonniespratley/rr-instagram-app" class="hidden">
+			<img style="position: absolute; z-index:99999; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+		</a>
 		<header class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container">
@@ -27,7 +27,6 @@
 					<a href="/" class="brand hidden-phone" title="Banjo Home"> <%= image_tag "logo@2x.png" %> </a>
 					<a href="/" class="brand hidden-desktop hidden-tablet" title="Banjo Home"> <%= image_tag "logo.png" %> </a>
 					<div style="height: auto;" class="nav-collapse in collapse">
-						
 						<ul class="nav">
 							<li>
 								<a href="" class="btn btn-inverse scroll" ng-click="App.getRecent()">Recent</a>
@@ -39,8 +38,6 @@
 								<a href="" class="btn btn-inverse scroll" ng-click="App.getTrending()">Trending</a>
 							</li>
 						</ul>
-						
-						
 						<div class="navbar-search">
 							<form class="form-search" ng-submit="App.search();" style="position: relative;">
 								<div class="input-prepend">
@@ -51,15 +48,19 @@
 								</div>
 							</form>
 						</div>
-						
 						<div class="pull-right">
-							<span id="app-loader">
-									<span ng-show="App.loading">
-										<%= image_tag 'ajax-loader.gif'%>
-									</span>
-								</span>
+							<div class="btn-group">
+								<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"> 
+									<img src="https://secure.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" class="avatar">
+									<span class="username">jonniespratley</span>
+									<span class="caret"></span> </a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Settings</a></li>
+								</ul>
+							</div>
+							<span class="spacer"></span>
+							<span id="app-loader"> <span ng-show="App.loading"> <%= image_tag 'ajax-loader.gif'%> </span> </span>
 						</div>
-						
 					</div>
 				</div>
 			</div>
@@ -80,7 +81,6 @@
 				</div>
 			</footer>
 		</div>
-		
 		<%= javascript_include_tag "application" %>
 	</body>
 </html>

@@ -44,9 +44,14 @@ html, body {
     .brand:hover {
       background-color: transparent;
     }
+    .avatar{
+      height: 25px;
+    }
+    .btn-group{
+      display: inline-block;
+    }
     .nav
       .btn {
-        
         padding: 5px 20px !important;
         margin-left: 20px;
         border-radius: 10px;
@@ -82,7 +87,8 @@ html, body {
     }
     .navbar-search {
       //padding-top: 5px;
-      margin-left: 55px; 
+      margin-left: 15px; 
+      margin-right: 5px; 
     }
     input.search-query {
       background: #111 !important;
