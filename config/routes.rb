@@ -15,6 +15,7 @@ RrInstagramWebapp::Application.routes.draw do
   get "instagram/callback"
   get "instagram/authorize"
   get "instagram/search"
+  get "instagram/user"
 
   resources :pages
 

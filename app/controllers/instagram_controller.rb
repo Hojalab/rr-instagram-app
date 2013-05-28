@@ -59,6 +59,14 @@ class InstagramController < ApplicationController
       format.json { render :json => @results }
     end
   end
+  
+  # Get current authenticated users info
+  def user
+    respond_to do |format|
+      format.html
+      format.json { render :json => @results }
+    end
+  end
 
   # Connect to Instagram for authorization, handled in js code
   def authorize

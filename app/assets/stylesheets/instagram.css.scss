@@ -4,13 +4,13 @@
 html, body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background: #353535 !important; 
+  background: #fff !important; 
 }
 
 .instagram-app{
   /* @group Base */
   h1, small, p {
-    color: #fff;
+    //color: #fff;
   }
   
   #app-loader {
@@ -37,7 +37,13 @@ html, body {
     color: #888;
   }  
   /* @end */
- 
+ .meta{
+  text-align:center;
+  color: #999;
+  }
+  a:hover{
+    text-decoration: none !important;
+  }
    
   /* @group Navbar */
   .navbar {
