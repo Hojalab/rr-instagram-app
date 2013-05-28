@@ -55,7 +55,8 @@
 									<span class="username">jonniespratley</span>
 									<span class="caret"></span> </a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Settings</a></li>
+									<li><a href="/instagram/user">Profile</a></li>
+									<li><a href="/instagram/settings">Settings</a></li>
 								</ul>
 							</div>
 							<span class="spacer"></span>
@@ -65,12 +66,10 @@
 				</div>
 			</div>
 		</header>
-		<div class="container-fluid">
-			<div id="content" class="row-fluid">
-				<div class="span12">
-					<%= yield %>
-				</div>
-			</div>
+		
+		<section>
+			<%= yield %>
+		</section>
 			<footer id="footer" class="row-fluid clearfix">
 				<div class="span12">
 					<p>
@@ -80,7 +79,6 @@
 					</p>
 				</div>
 			</footer>
-		</div>
 		<%= javascript_include_tag "application" %>
 	</body>
 </html>
