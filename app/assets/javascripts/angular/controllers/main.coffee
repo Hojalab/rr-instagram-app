@@ -115,7 +115,7 @@ angular.module('App')
         )
       #============ INSTAGRAM API ==============
       Instagram:
-        user: null
+        current_user: null
         options: 
           client_id: '42af9189076c4ce7903df62e8afa2009'
           client_secret: '5690ec482a8f4f818daf898065ecc1c7'
@@ -125,10 +125,31 @@ angular.module('App')
           auth_url: null
           cookies: true
           cookie: null
+        Api:
+          url: 'https://api.instagram.com/v1'
+          data: null
+          #Utility method for making API calls to Instagram
+          call: (resource, params, callback) ->
+            
+            #Get users access token from session storage
+            $scope.App.Instagram.getAccessToken()
+            #/users/1574083/?access_token=49636275.f59def8.a495d726f5a94727b5cf4bb8caddc81a
+            options = 
+              params:
+                callback: 'JSON_CALLBACK'
+                access_token: $scope.App.Instagram.options.access_token
+                
+            $http.jsonp("https://api.instagram.com/v1#{resource}", options).success((data) ->
+                callback(data) if callback
+                console.log(data)
+                $scope.App.Instagram.Api.data = data
+              )
+          
         #Handle initializing Instagram API
         init: (options) ->
+          $scope.App.Instagram.getAccessToken()
           $scope.App.Instagram.options = angular.extend(options, @options)
-  
+          
         #Handle authenticate a user
         authorize: () ->
           url = "https://instagram.com/oauth/authorize/?client_id=#{$scope.App.Instagram.options.client_id}&redirect_uri=#{$scope.App.Instagram.options.redirect_uri}&response_type=token"
@@ -152,4 +173,30 @@ angular.module('App')
           token = window.sessionStorage.getItem('App.Instagram.options.access_token') if window.sessionStorage
           $scope.App.Instagram.options.access_token = token if token
 
+        User:
+          data: 
+            info: null
+            feed: null
+            recent: null
+            liked: null
+          #Get basic information about a user.
+          getInfo: () ->
+           
+          #See the authenticated user's feed.
+          getFeed: () ->
+            $scope.App.Instagram.Api.call('/users/self/feed', null, (data) ->
+              $scope.App.Instagram.User.data.feed = data 
+             ) 
+          #Get the most recent media published by a user.
+          getRecent: () ->
+             $scope.App.Instagram.Api.call('/users/self/media/recent', null, (data) ->
+              $scope.App.Instagram.User.data.feed = data 
+             ) 
+          #See the authenticated user's list of media they've liked.
+          getLiked: () ->
+            
+          #Search for a user by name.
+          search: (q) ->
+            
+            
     window.App = $scope.App;

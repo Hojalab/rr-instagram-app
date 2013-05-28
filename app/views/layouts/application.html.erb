@@ -50,13 +50,13 @@
 						</div>
 						<div class="pull-right">
 							
-							<a class="btn btn-inverse" href="#" ng-hide="App.Instagram.user" ng-click="App.Instagram.authorize()">
+							<a class="btn btn-inverse" href="#" ng-hide="App.Instagram.current_user" ng-click="App.Instagram.authorize()">
 								<i class="icon-lock icon-white"></i>	Authorize
 							</a> 
-							<div class="btn-group" ng-show="App.Instagram.user">								
+							<div class="btn-group" ng-show="App.Instagram.current_user">								
 								<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"> 
-									<img src="{{App.Instagram.user.profile_picture}}" class="avatar">
-									<span class="username">{{App.Instagram.user.username}}</span>
+									<img ng-src="{{App.Instagram.current_user.profile_picture}}" class="avatar">
+									<span class="username">{{App.Instagram.current_user.username}}</span>
 									<span class="caret"></span> 
 								</a>
 								<ul class="dropdown-menu">

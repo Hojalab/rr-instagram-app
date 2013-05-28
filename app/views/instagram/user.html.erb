@@ -1,6 +1,5 @@
+<br/>
 <div class="container">
-	<br/>
-
   <div class="row-fluid">
     <div class="span7">
       <div class="pull-left" style="margin-right:15px">
@@ -21,29 +20,19 @@
     </div>
   </div>
   <hr/>
-  <div class="row-fluid">
+  <div class="row-fluid" ng-init="App.Instagram.User.getRecent();">
     <div class="span12">
-      <ul class="thumbnails">
-        <li class="span2">
+      <ul class="thumbnails user-tiles">
+        <li class="span2" ng-repeat="item in App.Instagram.User.data.feed.data" id="tile_{{$index}}">
           <a href="#" class="thumbnail">
-            <img src="http://placehold.it/150x150"/>
+            <img src="http://placehold.it/100x100" ng-src="{{item.images.thumbnail.url}}"/>
             <div class="meta">
-              <i class="icon-heart"></i> 3
+              <i class="icon-heart"></i> {{item.likes.count}}
             
-              <i class="icon-comment"></i> 0
+              <i class="icon-comment"></i> {{item.comments.count}}
             </div>
           </a>
         </li>
       </ul>
     </div>
   </div>
-
-
-
-<p><a href="" class="btn btn-large btn-primary" ng-click="App.Instagram.authorize()">Authorize</a>
-<p ng-init="App.Instagram.checkAccessToken()">
-	Check for access_token <code>{{App.Instagram.access_token}}</code> and save it.
-</p>
-<pre>{{App.user | json}}</pre>
-
-</div>
