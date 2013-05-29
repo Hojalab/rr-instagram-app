@@ -251,6 +251,26 @@ html, body {
     
     /**** disabling Isotope CSS3 transitions ****/
   /* @end */
+    
+  /* @group User Profile*/
+    .user-profile-img{
+      height: 80px;
+    }
+   .user-counts-list{
+    li{
+      padding: 5px;
+      text-align: center;
+      margin-left: 25px;
+     .count{
+        font-weight: bold;
+        display:block;
+        font-size: 3em;
+        margin-top: 10px;
+      }
+    }
+  }
+/* @end */
+
 }
 
 

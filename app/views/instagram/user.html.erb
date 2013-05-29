@@ -1,21 +1,22 @@
 <br/>
-<div class="container">
-  <div class="row-fluid">
-    <div class="span7">
+<div class="container" ng-show="App.Instagram.User.data.info">
+  <div class="row-fluid" >
+    <div class="span6">
       <div class="pull-left" style="margin-right:15px">
-          <img src="http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=80&d=mm&r=g" class="img-polaroid"/>
+          <img src="http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=80&d=mm&r=g" ng-src="{{App.Instagram.User.data.info.profile_picture}}" class="img-polaroid user-profile-img"/>
       </div>
 
-      <h2>jonniespratley</h2>
+      <h2>{{App.Instagram.User.data.info.username}}</h2>
       <p>
-        <strong>Jonnie Spratley</strong> <a href="#">http://jonniespratley.me</a>
+        <strong>{{App.Instagram.User.data.info.full_name}}</strong> 
+        <a href="{{App.Instagram.User.data.info.website}}" target="_blank">{{App.Instagram.User.data.info.website}}</a>
       </p>
     </div>
-    <div class="span5">
-      <ul class="inline">
-        <li>Photos <span class="badge">100</span></li>
-        <li>Followers <span class="badge">50</span></li>
-        <li>Following <span class="badge">130</span></li>
+    <div class="span6">
+      <ul class="inline user-counts-list">
+        <li>Photos <span class="count">{{App.Instagram.User.data.info.counts.media}}</span></li>
+        <li>Followers <span class="count">{{App.Instagram.User.data.info.counts.followed_by}}</span></li>
+        <li>Following <span class="count">{{App.Instagram.User.data.info.counts.follows}}</span></li>
       </ul>
     </div>
   </div>

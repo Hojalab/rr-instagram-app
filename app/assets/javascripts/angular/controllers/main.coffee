@@ -52,7 +52,7 @@ angular.module('App')
             console.log(item, index);
           )
           
-          #$scope.App.changeAllImages()
+         # $scope.App.changeAllImages()
           #$timeout($scope.App.changeAllImages, 1000);
         );
       #Handle getting recent images
@@ -82,7 +82,7 @@ angular.module('App')
       changeAllImages: () ->
         self = @;
         angular.forEach( $scope.App.data.items, (item, index) ->
-            self.changeImage(index, item.images.low_resolution.url)
+            self.addItem(item)
             console.log(item, index)
           )
         
@@ -134,7 +134,7 @@ angular.module('App')
           data: null
           #Utility method for making API calls to Instagram
           call: (resource, params, callback) ->
-            
+            $scope.App.loading = true
             #Get users access token from session storage
             $scope.App.Instagram.getAccessToken()
             #/users/1574083/?access_token=49636275.f59def8.a495d726f5a94727b5cf4bb8caddc81a
@@ -142,8 +142,9 @@ angular.module('App')
               params:
                 callback: 'JSON_CALLBACK'
                 access_token: $scope.App.Instagram.options.access_token
-                
+            options = angular.extend(options, params)    
             $http.jsonp("https://api.instagram.com/v1#{resource}", options).success((data) ->
+                $scope.App.loading = false
                 callback(data) if callback
                 console.log(data)
                 $scope.App.Instagram.Api.data = data
@@ -185,19 +186,20 @@ angular.module('App')
             liked: null
           #Get basic information about a user.
           getInfo: () ->
-             $scope.App.Instagram.Api.call('/users/#{$scope.App.Instagram.current_user.id}', null, (data) ->
-              $scope.App.Instagram.User.data.info = data 
+             $scope.App.Instagram.Api.call("/users/#{$scope.App.Instagram.current_user.id}", {cache: true}, (data) ->
+              $scope.App.Instagram.User.data.info = data.data 
              )
           #See the authenticated user's feed.
           getFeed: () ->
-            $scope.App.Instagram.Api.call('/users/self/feed', null, (data) ->
-              $scope.App.Instagram.User.data.feed = data 
+            $scope.App.Instagram.Api.call('/users/self/feed', {cache: true}, (data) ->
+              $scope.App.Instagram.User.data.feed = data.data
              ) 
           #Get the most recent media published by a user.
           getRecent: () ->
-             $scope.App.Instagram.Api.call('/users/self/media/recent', null, (data) ->
+             $scope.App.Instagram.Api.call('/users/self/media/recent', {cache: true}, (data) ->
               $scope.App.Instagram.current_user = data.data[0].user 
-              $scope.App.Instagram.User.data.feed = data 
+              $scope.App.Instagram.User.data.feed = data
+              $scope.App.Instagram.User.getInfo() 
              ) 
           #See the authenticated user's list of media they've liked.
           getLiked: () ->
@@ -206,4 +208,5 @@ angular.module('App')
           search: (q) ->
             
             
+    $rootScope.App = $scope.App
     window.App = $scope.App

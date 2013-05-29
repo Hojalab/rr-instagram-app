@@ -15,11 +15,11 @@
 			</div>
 			<article class="row-fluid" ng-init="App.init()">
 				<section class="span12">
-					<div id="tile-grid" class="tiles" style="min-height: 500px;">
+					<div id="tile-grid" class="tiles hidden" style="min-height: 500px;">
 						
 					</div>
 					
-					<div class="pagination pagination-centered">
+					<div class="pagination pagination-centered hidden">
 						<ul>
 			                <li class="disabled"><a href="#">«</a></li>
 			                <li class="active"><a href="#">1</a></li>
@@ -36,7 +36,7 @@
 							<!-- @TODO: [Banjo Tile Directive] -->
 							<banjo-tile id="{{item.id}}"
 							index="{{$index}}"
-							image="{{item.images.low_resolution.url || item.profile_picture}}"
+							image="{{item.images.thumbnail.url || item.profile_picture}}"
 							description="{{item.caption.text || item.bio}}"
 							username="{{item.user.username || item.username}}"
 							comments=""
@@ -90,7 +90,6 @@
 
 
 					<!-- @TODO: [User Details] -->	
-					<a class="btn" data-toggle="modal" href="#userDetailModal" >User Detail</a>
 
 					<div class="modal hide fade" id="userDetailModal">
 					  <div class="modal-header">
@@ -154,7 +153,7 @@
 								<div class="tile-inner">
 									<div class="tile-img">
 										<a data-toggle="modal" href="#tileDetailModal" ng-click="App.selectTile(item);">
-										<img id="tile_{{$index}}_img" class="pic" src="http://placehold.it/330x330" ng-src="{{item.images.low_resolution.url}}"/>
+										<img id="tile_{{$index}}_img" class="pic" src="http://placehold.it/200x200" ng-src="{{item.images.low_resolution.url}}"/>
 										</a>
 										<div class="description">
 											{{item.caption.text}}

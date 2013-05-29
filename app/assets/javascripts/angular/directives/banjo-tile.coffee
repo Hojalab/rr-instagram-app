@@ -32,10 +32,10 @@ angular.module('App')
 				</div>
 				<div class='pull-right links'>
 					<a href='#' rel='tooltip' data-title='{{comments}}'>
-						<img src='assets/tile-comment.png'/>
+						<img src='/assets/tile-comment.png'/>
 					</a>
 					<a href='#' rel='tooltip' data-title='{{likes}}'>
-						<img src='assets/tile-heart.png'/>
+						<img src='/assets/tile-heart.png'/>
 					</a>
 				</div>
 			</div>
