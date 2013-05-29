@@ -58,7 +58,7 @@ angular.module('App')
       #Handle getting recent images
       getRecent:() ->
         @current_page = 'Recent'
-        @getData('recent', null, (data)->
+        @getData('recent', {cache: false}, (data)->
             
         )
       #Handle getting popular images
