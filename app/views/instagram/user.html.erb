@@ -1,106 +1,98 @@
-
-
-<div class="container" ng-show="App.Instagram.User.data.info">
-<div class="clearfix">
-        <div class="compWrapper">
-            <div class="compInnerWrapper">
-                <div class="compContainer">
-                    <div class="compPhoto compPhoto1">
-                        <a href="#">
-                            <div class="Image iWithTransition">
-                                <img src="http://placehold.it/200x200/888/fff&text=photo1"/>
-                                <b class="compPhotoShadow"></b>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="compPhoto compPhoto2">
-                        <a href="#">
-                            <div class="Image iWithTransition">
-                                <img src="http://placehold.it/200x200/999/fff&text=photo2"/>
-                                <b class="compPhotoShadow"></b>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="compPhoto compPhoto3">
-                        <a href="#">
-                            <div class="Image iWithTransition">
-                                <img src="http://placehold.it/320x320/333/fff&text=photo3"/>
-                                <b class="compPhotoShadow"></b>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="compPhoto compPhoto4">
-                        <a href="#">
-                            <div class="Image iWithTransition">
-                                <img src="http://placehold.it/220x220/222/fff&text=photo4"/>
-                                <b class="compPhotoShadow"></b>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="compPhoto compPhoto5">
-                        <a href="#">
-                            <div class="Image iWithTransition">
-                                <img src="http://placehold.it/220x220/444/fff&text=photo5"/>
-                                <b class="compPhotoShadow"></b>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="compPhoto compPhoto6">
-                        <a href="#">
-                            <div class="Image iWithTransition">
-                                <img src="http://placehold.it/230x230/333/fff&text=photo6"/>
-                                <b class="compPhotoShadow"></b>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="compPhoto compPhoto7">
-                        <a href="#">
-                            <div class="Image iWithTransition">
-                                <img src="http://placehold.it/200x200/555/fff&text=photo7"/>
-                                <b class="compPhotoShadow"></b>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  
-<br/>    
-  <div class="row-fluid" >
-    <div class="span6">
-      <div class="pull-left" style="margin-right:15px">
-          <img src="http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=80&d=mm&r=g" ng-src="{{App.Instagram.User.data.info.profile_picture}}" class="img-polaroid user-profile-img"/>
-      </div>
-
-      <h2>{{App.Instagram.User.data.info.username}}</h2>
-      <p>
-        <strong>{{App.Instagram.User.data.info.full_name}}</strong> 
-        <a href="{{App.Instagram.User.data.info.website}}" target="_blank">{{App.Instagram.User.data.info.website}}</a>
-      </p>
-    </div>
-    <div class="span6">
-      <ul class="inline user-counts-list">
-        <li>Photos <span class="count">{{App.Instagram.User.data.info.counts.media}}</span></li>
-        <li>Followers <span class="count">{{App.Instagram.User.data.info.counts.followed_by}}</span></li>
-        <li>Following <span class="count">{{App.Instagram.User.data.info.counts.follows}}</span></li>
-      </ul>
-    </div>
-  </div>
-  <hr/>
-  <div class="row-fluid" ng-init="App.Instagram.User.getRecent();">
-    <div class="span12">
-      <ul class="thumbnails user-tiles">
-        <li class="span2" ng-repeat="item in App.Instagram.User.data.feed.data" id="tile_{{$index}}">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/100x100" ng-src="{{item.images.thumbnail.url}}"/>
-            <div class="meta">
-              <i class="icon-heart"></i> {{item.likes.count}}
-            
-              <i class="icon-comment"></i> {{item.comments.count}}
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+<header class="clearfix feed-header" data-role="banner">
+	<div class="compWrapper">
+		<div class="compInnerWrapper">
+			<div class="compContainer">
+				<div class="compPhoto compPhoto1">
+					<a href="#">
+					<div class="Image iWithTransition">
+						<img src="http://placehold.it/225x225/888/fff&text=photo1"/>
+						<b class="compPhotoShadow"></b>
+					</div> </a>
+				</div>
+				<div class="compPhoto compPhoto2">
+					<a href="#">
+					<div class="Image iLoaded iWithTransition">
+						<img src="http://placehold.it/225x225/545454/fff&text=photo2"/>
+						<b class="compPhotoShadow"></b>
+					</div> </a>
+				</div>
+				<div class="compPhoto compPhoto3">
+					<a href="#" class="">
+					<div class="Image iWithTransition">
+						<img src="http://placehold.it/425x425/157B86/fff&text=photo3"/>
+						<b class="compPhotoShadow"></b>
+					</div> </a>
+				</div>
+				<div class="compPhoto compPhoto4">
+					<a href="#">
+					<div class="Image iWithTransition">
+						<img src="http://placehold.it/250x250/222/fff&text=photo4"/>
+						<b class="compPhotoShadow"></b>
+					</div> </a>
+				</div>
+				<div class="compPhoto compPhoto5">
+					<a href="#">
+					<div class="Image iWithTransition">
+						<img src="http://placehold.it/220x220/444/fff&text=photo5"/>
+						<b class="compPhotoShadow"></b>
+					</div> </a>
+				</div>
+				<div class="compPhoto compPhoto6">
+					<a href="#">
+					<div class="Image iWithTransition">
+						<img src="http://placehold.it/230x230/333/fff&text=photo6"/>
+						<b class="compPhotoShadow"></b>
+					</div> </a>
+				</div>
+				<div class="compPhoto compPhoto7">
+					<a href="#">
+					<div class="Image iWithTransition">
+						<img src="http://placehold.it/250x250/555/fff&text=photo7"/>
+						<b class="compPhotoShadow"></b>
+					</div> </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<div class="container page" ng-show="App.Instagram.User.data.info">
+	<div class="profile-user">
+		<div class="row-fluid" >
+			<div class="span6">
+				<div class="pull-left" style="margin-right:15px">
+					<img src="http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=80&d=mm&r=g" ng-src="{{App.Instagram.User.data.info.profile_picture}}" class="img-polaroid user-profile-img"/>
+				</div>
+				<h2>{{App.Instagram.User.data.info.username}}</h2>
+				<p>
+					<strong>{{App.Instagram.User.data.info.full_name}}</strong>
+					<a href="{{App.Instagram.User.data.info.website}}" target="_blank">{{App.Instagram.User.data.info.website}}</a>
+				</p>
+			</div>
+			<div class="span6">
+				<ul class="inline user-counts-list">
+					<li>
+						Photos <span class="count">{{App.Instagram.User.data.info.counts.media}}</span>
+					</li>
+					<li>
+						Followers <span class="count">{{App.Instagram.User.data.info.counts.followed_by}}</span>
+					</li>
+					<li>
+						Following <span class="count">{{App.Instagram.User.data.info.counts.follows}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid" ng-init="App.Instagram.User.getRecent();">
+		<div class="span12">
+			<ul class="thumbnails user-tiles">
+				<li class="span2" ng-repeat="item in App.Instagram.User.data.feed.data" id="tile_{{$index}}">
+					<a href="#" class="thumbnail">
+					<img src="http://placehold.it/100x100" ng-src="{{item.images.thumbnail.url}}"/>
+					<div class="meta">
+						<i class="icon-heart"></i> {{item.likes.count}} <i class="icon-comment"></i> {{item.comments.count}}
+					</div> </a>
+				</li>
+			</ul>
+		</div>
+	</div>
