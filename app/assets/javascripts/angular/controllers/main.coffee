@@ -67,7 +67,7 @@ angular.module('App')
       getPopular: () ->
         @current_page = 'Popular'
         @getData('popular')
-      #Handle getting trending images
+      #Handle getting trending images, based on users current location.
       getTrending: () ->
         @current_page = 'Trending'
         @getData('trending')
