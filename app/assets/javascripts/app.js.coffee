@@ -12,22 +12,33 @@ mods = [
 # Declare routes 
 ### ###########################################################################
 
-routesConfigFn = ($routeProvider)->
+routesConfigFn = ($routeProvider, $locationProvider)->
 
   $routeProvider.when('/search',
       {templateUrl: 'searchView/searchView.html'})
+  
   $routeProvider.when('/details/:id',
       {templateUrl: 'detailsView/detailsView.html'})
 
+  $routeProvider.when('/instagram/trending',
+      {templateUrl: '/instagram/trending.html'})
+  $routeProvider.when('/instagram/recent',
+      {templateUrl: '/instagram/recent.html'})
+  $routeProvider.when('/instagram/popular',
+      {templateUrl: '/instagram/popular.html'})
+
+
   $routeProvider.otherwise({redirectTo: '/'})
+  $locationProvider.html5Mode(false)
 
 ### ###########################################################################
 # Create and bootstrap app module
 ### ###########################################################################
 
-m = angular.module('App', mods)
+app = angular.module('App', mods)
 
-m.config ['$routeProvider', routesConfigFn]
+
+app.config ['$routeProvider', '$locationProvider', routesConfigFn]
 
 #m.config (['common.services.envProvider', (envProvider)->
 
@@ -43,6 +54,14 @@ m.config ['$routeProvider', routesConfigFn]
 #    env.appRun()
 #])
 
-window.App = m
+
+app.run(($rootScope) ->
+  $rootScope.$on('$routeChangeStart', (scope, newRoute) ->
+    console.log(scope, newRoute);
+  )
+)
+
+
+window.App = app
 angular.element(document).ready ()->
   angular.bootstrap(document,['App'])

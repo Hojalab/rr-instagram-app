@@ -36,18 +36,20 @@ angular.module('App')
       getData:(what, params, callback) ->
         self = @
         $scope.App.loading = true
-        $http.get("/instagram/#{what}.json", {params: params}).success((data) ->
+        $http.get("/instagram/#{what}.json", {params: params, cache: false}).success((data) ->
           $scope.App.loading = false
           $scope.App.data.timestamp = new Date()
+          $scope.App.data.items = data
+          
           callback(data) if callback
           angular.forEach( data, (item, index) ->
-            $scope.App.data.items = data if $scope.App.data.items.length is 0;
+            #$scope.App.data.items = data if $scope.App.data.items.length is 0;
             
             #Append to array
             #$scope.App.data.items.push(item);
             
             #Extend each item into eachother
-            $scope.App.data.items[index] = angular.extend(item, $scope.App.data.items[index]);
+            #$scope.App.data.items[index] = angular.extend(item, $scope.App.data.items[index]);
             
             console.log(item, index);
           )
