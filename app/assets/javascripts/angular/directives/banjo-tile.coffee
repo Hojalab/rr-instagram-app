@@ -31,10 +31,10 @@ angular.module('App')
 					</div>
 				</div>
 				<div class='pull-right links'>
-					<a href='#' rel='tooltip' data-title='{{comments}}'>
+					<a href='#commentsDetailModal' data-toggle='modal' ng-click='click()'>
 						<img src='/assets/tile-comment.png'/>
 					</a>
-					<a href='#' rel='tooltip' data-title='{{likes}}'>
+					<a href='#likesDetailModal' data-toggle='modal' ng-click='click()'>
 						<img src='/assets/tile-heart.png'/>
 					</a>
 				</div>

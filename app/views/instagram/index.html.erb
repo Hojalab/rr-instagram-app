@@ -108,7 +108,7 @@
 					<!-- @TODO: [Comment Details] -->
 
 
-					<div class="modal hide fade" id="commentDetailModal">
+					<div class="modal hide fade" id="commentsDetailModal">
 					  <div class="modal-header">
 					    <button type="button" class="close" data-dismiss="modal">×</button>
 					    <h3> {{App.selectedTile.comments.count}} Comments</h3>
@@ -124,6 +124,7 @@
 						    <p>{{comment.text}}</p>
 						  </div>
 						</div>
+						
 					  </div>
 					  <div class="modal-footer">
 					    <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -134,10 +135,20 @@
 					<div class="modal hide fade" id="likesDetailModal">
 					  <div class="modal-header">
 					    <button type="button" class="close" data-dismiss="modal">×</button>
-					    <h3>Likes</h3>
+					    <h3>{{App.selectedTile.likes.count}} Likes</h3>
 					  </div>
 					  <div class="modal-body">
-					    <pre>{{App.selectedTile.likes | json}}</pre>
+					    
+					    <div class="media" ng-repeat="like in App.selectedTile.likes.data">
+						  <a class="pull-left" href="#">
+						    <img class="media-object" src="http://placehold.it/64x64" ng-src="{{like.profile_picture}}" style="height:64px;">
+						  </a>
+						  <div class="media-body">
+						    <h4 class="media-heading">{{like.username}}</h4>
+						    <p>{{like.full_name}}</p>
+						  </div>
+						
+					    
 					  </div>
 					  <div class="modal-footer">
 					    <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -166,7 +177,7 @@
 											</div>
 										</div>
 										<div class="pull-right links">
-											<a data-toggle="modal" href="#commentDetailModal"> <%= image_tag 'tile-comment.png' %> </a>
+											<a data-toggle="modal" href="#commentsDetailModal"> <%= image_tag 'tile-comment.png' %> </a>
 											<a data-toggle="modal" href="#likesDetailModal"> <%= image_tag 'tile-heart.png' %> </a>
 										</div>
 									</div>

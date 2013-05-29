@@ -13,7 +13,7 @@
 		<%= csrf_meta_tags %>
 		<%= javascript_include_tag "application" %>
 	</head>
-	<body ng-controller="MainCtrl" class="instagram-app">
+	<body ng-controller="MainCtrl" class="instagram-app <%= params[:controller]%> <%= params[:action]%>">
 		<a href="https://github.com/jonniespratley/rr-instagram-app" class="hidden">
 			<img style="position: absolute; z-index:99999; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
 		</a>
