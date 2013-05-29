@@ -1,4 +1,55 @@
 ###
+ This is a tile collection directive for the Banjo Tiles
+###
+angular.module('App')
+.directive('banjoTileContainer', () ->
+  replace: true
+  transclude: true
+  scope:
+    ngModel: '='
+    items: "@"
+    click: "&"
+  restrict: 'E'
+  template: "
+          <ul class='thumbnails tiles'>
+            <li class='span3 tile' ng-repeat='item in items' id='tile_{{$index}}'>
+              <banjo-tile id='{{item.id}}'
+              index='{{$index}}'
+              image='{{item.images.thumbnail.url}}'
+              description='{{item.caption.text}}'
+              username='{{item.user.username}}'
+              comments=''
+              click='click(item);'
+              likes=''></banjo-tile>
+              <!---->
+            </li>
+          </ul>
+  "
+  link: (scope, element, attrs) ->
+    oldValue = ''
+    newValue = ''
+    
+   
+    console.log(element, attrs)
+    
+    #set the initial value of the textbox
+    angular.element(element).data('items', scope.image);
+
+    #detect outside changes and update our input
+    scope.$watch('items', (value) ->
+      oldValue = value
+      console.log('old value = ' + oldValue)
+    );
+    
+    #observe changes to interpolated attribute
+    attrs.$observe('items', (value) ->
+      newValue = value
+      console.log('new value = ' + newValue)
+      #element.find('img').fadeOut().fadeIn();
+    );
+  )
+
+###
  This is a custom directive for the Banjo Tiles
 ###
 angular.module('App')
