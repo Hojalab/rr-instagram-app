@@ -24,6 +24,34 @@
 				$('.message').html("Geolocation is not supported by this browser.");
 			}
 		}
+		
+		
+		function getTrendingData(){
+			$.get('/data/locations.json').done(function(data){
+				console.log(data);
+				$.each(data.data, function(index, obj){
+					addMarker(obj);
+				});
+			});
+		}
+		
+		
+		function addMarker(params){
+			var clientPosition = new google.maps.LatLng(params.latitude, params.longitude);
+			$marker = $('#map_canvas').gmap('addMarker', {
+				'position' : clientPosition,
+				'bounds' : true,
+				'zoom' : 10,
+				'id': params.id,
+				'name' : params.name
+			});
+			$marker.click(function() {
+				console.log(this);
+				$('#map_canvas').gmap('openInfoWindow', {
+					'content' : params.name
+				}, this);
+			});
+		}
 
 		//Place marker on map
 		function showPosition(position) {
@@ -36,7 +64,7 @@
 			});
 			$marker.click(function() {
 				$('#map_canvas').gmap('openInfoWindow', {
-					'content' : 'Hello World!'
+					'content' : "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude
 				}, this);
 			});
 			$('#map_canvas').gmap('addShape', 'Circle', {
@@ -52,6 +80,7 @@
 		//Init map and get users location
 		$('#map_canvas').gmap().bind('init', function(evt, map) {
 			getLocation();
+			getTrendingData();
 		});
 		
 		
