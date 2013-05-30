@@ -1,0 +1,32 @@
+<!-- Test Framework -->
+
+<% stylesheet_link_tag 'mocha.css' %>
+<script src="/assets/mocha.js"></script>
+<script src="/assets/chai.js"></script>
+
+
+
+<div class="container">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="page-header">
+				<h1>Testing <small>
+					This is the about page.</small></h1>
+			</div>
+			
+			<div id="mocha"></div>
+			<script>
+				mocha.setup('bdd')
+			</script>
+			<!-- assertion framework -->
+			<script>var expect = chai.expect</script>
+			
+			<script>mocha.run()</script>
+		</div>
+	</div>
+</div>
+
+<!-- include source files here... -->
+			<!-- include spec files here... -->
+			<script src="spec/test.js"></script>
+			

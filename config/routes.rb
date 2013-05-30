@@ -5,7 +5,11 @@ RrInstagramWebapp::Application.routes.draw do
   match "home" => 'home#index'
   match "home/index" => 'home#index'
   match "home/about" => 'home#about'
+  match "test" => 'home#test'
+
   get "home/index" #Home page
+  get "home/test" #Home page
+  
 
   
   # Instagram Controller Routes  

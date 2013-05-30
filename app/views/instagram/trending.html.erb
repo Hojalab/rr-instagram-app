@@ -2,16 +2,11 @@
 	<div class="row-fluid">
 		<div class="span12">
 			<h1 class="hidden">Instagram#trending</h1>
-			<legend>
-				Leaflet Map
-			</legend>
+			 
 			<div class="well">
 				<div id="leaflet_map_canvas" style="min-height: 350px;" class="map-canvas"></div>
 			</div>
-			<div class="well well-small">
-				<div class="message"></div>
-				<div id="map_canvas" style="min-height: 300px;"></div>
-			</div>
+			 
 		</div>
 	</div>
 </div>
@@ -25,22 +20,28 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
 <script>
 	$(document).ready(function() {
+		var map = null;
 		var init = function() {
+			getLocation();
+			getTrendingData();
 			// create a map in the "map" div, set the view to a given place and zoom
-			var map = L.map('leaflet_map_canvas').setView([38.6883767, -121.27403729], 15);
-			// add an OpenStreetMap tile layer
+			map = L.map('leaflet_map_canvas').setView([38.6883767, -121.27403729], 15);
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
-			// add a marker in the given location, attach some popup content to it and open the popup
-			L.marker([38.6883767, -121.27403729]).addTo(map).bindPopup('Your current location').openPopup();
+			
 		}
-		init();
+		var addLMarker = function(obj) {
+			// add a marker in the given location, attach some popup content to it and open the popup
+			L.marker([obj.latitude, obj.longitude]).addTo(map).bindPopup(obj.name).openPopup();
+		}
 		
-		console.log(document)
-		// addMarker returns a jQuery wrapped google.maps.Marker object
+		
+		
+		
 		var $marker = null;
-		//Get users location
+		
+		
 		function getLocation() {
 			if(navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(showPosition);
@@ -53,57 +54,33 @@
 			$.get('/data/locations.json').done(function(data) {
 				console.log(data);
 				$.each(data.data, function(index, obj) {
-					addMarker(obj);
+					addLMarker(obj);
 				});
-			});
-		}
-
-		function addMarker(params) {
-			var clientPosition = new google.maps.LatLng(params.latitude, params.longitude);
-			$marker = $('#map_canvas').gmap('addMarker', {
-				'position' : clientPosition,
-				'bounds' : true,
-				'zoom' : 10,
-				'id' : params.id,
-				'name' : params.name
-			});
-			$marker.click(function() {
-				console.log(this);
-				$('#map_canvas').gmap('openInfoWindow', {
-					'content' : params.name
-				}, this);
 			});
 		}
 
 		//Place marker on map
 		function showPosition(position) {
-			//$('.message').html("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
-			var clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			$marker = $('#map_canvas').gmap('addMarker', {
-				'position' : clientPosition,
-				'bounds' : true,
-				'zoom' : 10
-			});
-			$marker.click(function() {
-				$('#map_canvas').gmap('openInfoWindow', {
-					'content' : "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude
-				}, this);
-			});
-			$('#map_canvas').gmap('addShape', 'Circle', {
-				'strokeWeight' : 0,
-				'fillColor' : "#008595",
-				'fillOpacity' : 0.25,
-				'center' : clientPosition,
-				'radius' : 15,
-				'clickable' : false
-			});
+			var circle = L.circle([position.coords.latitude, position.coords.longitude], 500, {
+				color : 'red',
+				fillColor : '#f03',
+				fillOpacity : 0.5
+			}).addTo(map);
+			var options = {
+				draggable: true
+			};
+			// add a marker in the given location, attach some popup content to it and open the popup
+			var $marker = L.marker([position.coords.latitude, position.coords.longitude], options).addTo(map).bindPopup('Your current location').openPopup();
+			$marker.on('dragstart', function(e){
+				console.log(e, 'dragging');
+			})
+			$marker.on('dragend', function(e){
+				console.log(e.target._latlng, 'dragging end');
+			})
 		}
 
 		//Init map and get users location
-		$('#map_canvas').gmap().bind('init', function(evt, map) {
-			getLocation();
-			getTrendingData();
-		});
+		init();
 	});
 
 </script>
