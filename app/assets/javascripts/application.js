@@ -20,19 +20,12 @@
 //= require angular-ui.min
 //= require modernizr.custom.34814
 //= require js-webshim/polyfiller
-
-
 //= require bootstrap.min
-
-
 // ########## Plugins ##########
 //= require jstorage
 //= require jquery.isotope.min
 //= require instagram-js/ig-min
 
-
 // ########## App Scripts ##########
 //= require app
 //= require_tree ./angular
-
-

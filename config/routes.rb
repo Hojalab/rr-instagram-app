@@ -1,6 +1,6 @@
 RrInstagramWebapp::Application.routes.draw do
   resources :pages  
-  
+ # match ':controller(/:action).ng', format: 'ng'
   #Home Controller Routes
   match "home" => 'home#index'
   match "home/index" => 'home#index'
@@ -32,6 +32,7 @@ RrInstagramWebapp::Application.routes.draw do
     #...
     # You can have the root of your site routed with "root"
     # just remember to delete public/index.html.
+    #root :to => "home#index"
     root :to => "instagram#index"
     
     

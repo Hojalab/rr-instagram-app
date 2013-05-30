@@ -1,7 +1,7 @@
 # Instagram Controller
 # This controller holds the logic for Instagram API access and session management.
 #
-App.controller 'InstagramCtrl', ['$scope', 'InstagramApi', ($scope, InstagramApi) ->
+angular.module('App').controller 'InstagramCtrl', ['$scope', 'InstagramApi', ($scope, InstagramApi) ->
 	#$scope.images = InstagramApi.query()
 	Instagram:
 		options: 
