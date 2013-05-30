@@ -34,5 +34,27 @@ describe "Instagram Pages" do
     end
   end
   
+  #Test the user page
+  describe "GET /instagram/user" do
+    it "should display the users page" do
+      visit '/instagram/user'
+      page.should have_content('Instagram#user')
+    end
+  end
+  #Test the callback page
+  describe "GET /instagram/callback" do
+    it "should display the callback page" do
+      visit '/instagram/callback'
+      page.should have_content('Instagram#callback')
+    end
+  end
+  #Test the authorize page
+  describe "GET /instagram/authorize" do
+    it "should display the authorize page" do
+      visit '/instagram/authorize'
+      page.should have_content('Instagram#authorize')
+    end
+  end
+  
   
 end
