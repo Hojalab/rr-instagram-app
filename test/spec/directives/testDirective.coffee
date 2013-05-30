@@ -1,7 +1,7 @@
 'use strict'
 
 describe 'Directive: testDirective', () ->
-  beforeEach module 'yoappApp'
+  beforeEach module 'App'
 
   element = {}
 

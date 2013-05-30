@@ -1,66 +1,37 @@
-// Karma configuration
-// Generated on Thu May 30 2013 11:03:19 GMT-0700 (PDT)
-
+// Karma E2E configuration
 
 // base path, that will be used to resolve files and exclude
 basePath = '';
 
-
 // list of files / patterns to load in the browser
 files = [
-  JASMINE,
-  JASMINE_ADAPTER,
   ANGULAR_SCENARIO,
   ANGULAR_SCENARIO_ADAPTER,
-  
-  
-  'vendor/assets/javascripts/jquery.min.js',
-  'vendor/assets/javascripts/angular/angular.js',
-  
-  
-  'vendor/assets/javascripts/angular-mocks/angular-mocks.js',  
-  'app/assets/javascripts/*{.js,.coffee}',
-  'app/assets/javascripts/angular/**',
-  'test/mock/**/*.js',
-  'test/spec/**/*.js',
-  'test/spec/**'
+  'test/e2e/**/*.js'
 ];
-
 
 // list of files to exclude
-exclude = [
-  
-];
-
+exclude = [];
 
 // test results reporter to use
-// possible values: 'dots', 'progress', 'junit'
+// possible values: dots || progress || growl
 reporters = ['progress'];
 
-
 // web server port
-port = 9876;
-
+port = 8080;
 
 // cli runner port
 runnerPort = 9100;
 
-
 // enable / disable colors in the output (reporters and logs)
 colors = true;
-
-proxies = {'/': 'http://localhost:9876/test/e2e/'};
-urlRoot = '/_karma_/';
-
 
 // level of logging
 // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
 logLevel = LOG_INFO;
 
-
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = true;
-
+autoWatch = false;
 
 // Start these browsers, currently available:
 // - Chrome
@@ -72,10 +43,8 @@ autoWatch = true;
 // - IE (only Windows)
 browsers = ['Chrome'];
 
-
 // If browser does not capture in given timeout [ms], kill it
-captureTimeout = 60000;
-
+captureTimeout = 5000;
 
 // Continuous Integration mode
 // if true, it capture browsers, run tests and exit

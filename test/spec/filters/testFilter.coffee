@@ -3,7 +3,7 @@
 describe 'Filter: testFilter', () ->
 
   # load the filter's module
-  beforeEach module 'yoappApp'
+  beforeEach module 'App'
 
   # initialize a new instance of the filter before each test
   testFilter = {}

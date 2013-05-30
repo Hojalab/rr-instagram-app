@@ -3,7 +3,7 @@
 describe 'Service: testSvc', () ->
 
   # load the service's module
-  beforeEach module 'yoappApp'
+  beforeEach module 'App'
 
   # instantiate service
   testSvc = {}
