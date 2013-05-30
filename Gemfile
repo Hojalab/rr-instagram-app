@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~> 3.2.12'
 gem 'json'
 
 
@@ -26,10 +26,10 @@ group :development, :test do
   gem 'ruby-debug'
   #gem "sqlite3-ruby", "~> 1.3.7", :require => "sqlite3"
   
-  gem 'autotest'
-  gem 'autotest-rails-pure'
-  gem 'autotest-fsevent'
-  gem 'autotest-growl'
+  gem 'autotest' '4.3.2'
+  gem 'autotest-rails-pure', '~> 4.1.0'
+  gem 'autotest-fsevent', '~> 0.2.2'
+  gem 'autotest-growl', '~> 0.2.4'
 end
 
 # Test Envoirment
