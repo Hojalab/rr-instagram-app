@@ -1,7 +1,8 @@
 angular.module('App')
-  .controller 'MainCtrl', ($rootScope, $scope, $http, $timeout, $compile) ->
+  .controller 'MainCtrl', ($rootScope, $scope, $http, $timeout, $compile, $cookieStore, InstagramApi) ->
     
     $scope.App = 
+      InstagramApi: InstagramApi
       title: 'R&R Instagram App'
       build : '0.0.2'
       description : 'Using Instagram\'s popular media API (http://instagram.com/developer/endpoints/media/#get_media_popular), this webapp shows popular images in a grid that refreshes automatically.'

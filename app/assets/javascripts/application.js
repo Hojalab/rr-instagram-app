@@ -16,6 +16,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular.min
+//= require angular-cookies.min
 //= require angular-resource.min
 //= require angular-ui.min
 //= require modernizr.custom.34814
