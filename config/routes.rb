@@ -1,13 +1,14 @@
 RrInstagramWebapp::Application.routes.draw do
+  resources :pages  
   
+  #Home Controller Routes
   match "home" => 'home#index'
   match "home/index" => 'home#index'
   match "home/about" => 'home#about'
+  get "home/index" #Home page
+
   
-  
-  match "instagram" => 'instagram#index'
-  match 'instagram/trending/:latlng' => 'instagram#trending'
-  
+  # Instagram Controller Routes  
   get "instagram/index"
   get "instagram/popular"
   get "instagram/recent"
@@ -16,11 +17,9 @@ RrInstagramWebapp::Application.routes.draw do
   get "instagram/authorize"
   get "instagram/search"
   get "instagram/user"
+  match "instagram" => 'instagram#index'
+  match 'instagram/trending/:latlng' => 'instagram#trending'
 
-  resources :pages
-
-  #Home page
-  get "home/index"
   
 
 

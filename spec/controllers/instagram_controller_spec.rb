@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe InstagramController do
+  #Tell test to render views
+  render_views
 
   describe "GET 'index'" do
     it "returns http success" do
