@@ -71,6 +71,9 @@ class InstagramController < ApplicationController
   # Connect to Instagram for authorization, handled in js code
   def authorize
     #redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
+    respond_to do |format|
+      format.html
+    end
   end
 
   # Callback handler for Instagram authorization, handled in js code
@@ -79,6 +82,9 @@ class InstagramController < ApplicationController
     #response = Instagram.get_access_token(@code, :redirect_uri => CALLBACK_URL)
     #session[:access_token] = @code
     #redirect_to :controller => 'instagram', :action => 'index'
+    respond_to do |format|
+      format.html
+    end
   end
 
   # Instagram page for handling api calls
