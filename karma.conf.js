@@ -10,6 +10,8 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
+  ANGULAR_SCENARIO,
+  ANGULAR_SCENARIO_ADAPTER,
   'test/spec/**',
   'test/spec/**/*.js'
 ];
@@ -37,6 +39,9 @@ runnerPort = 9100;
 // enable / disable colors in the output (reporters and logs)
 colors = true;
 
+proxies = {'/': 'http://localhost:9876/test/e2e/'};
+urlRoot = '/_karma_/';
+
 
 // level of logging
 // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
@@ -55,7 +60,7 @@ autoWatch = true;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome', 'Safari', 'Firefox', 'IE'];
+browsers = ['Chrome', 'Safari', 'Firefox'];
 
 
 // If browser does not capture in given timeout [ms], kill it
