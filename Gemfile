@@ -24,6 +24,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.10.0'
   gem 'ruby-debug'
+  gem 'jasmine'
   #gem "sqlite3-ruby", "~> 1.3.7", :require => "sqlite3"
   
   gem 'autotest', '~> 4.3.0'
