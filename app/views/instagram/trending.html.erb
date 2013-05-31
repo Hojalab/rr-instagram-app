@@ -51,6 +51,14 @@
 		}
 
 		function getTrendingData() {
+			
+			///locations/search?access_token=&lat=&lng=&distance=5000
+			var options = {
+				access_token: '49636275.42af918.a4217e008f644ad3a76c59eff0f78b06',
+				lat: '38.6883767',
+				lng: '-121.27403729',
+				distance: 5000
+			};
 			$.get('/data/locations.json').done(function(data) {
 				console.log(data);
 				$.each(data.data, function(index, obj) {
@@ -64,8 +72,9 @@
 			var circle = L.circle([position.coords.latitude, position.coords.longitude], 500, {
 				color : 'red',
 				fillColor : '#f03',
-				fillOpacity : 0.5
+				fillOpacity : 0.3
 			}).addTo(map);
+			
 			var options = {
 				draggable: true
 			};
@@ -76,7 +85,13 @@
 			})
 			$marker.on('dragend', function(e){
 				console.log(e.target._latlng, 'dragging end');
+				updatePosition(e.target);
 			})
+		}
+		
+		//Handle updating the users position, draw circle and getTrendingData
+		function updatePosition(e){
+			
 		}
 
 		//Init map and get users location
