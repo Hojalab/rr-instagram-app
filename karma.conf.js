@@ -10,16 +10,17 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  ANGULAR_SCENARIO,
-  ANGULAR_SCENARIO_ADAPTER,
+  //ANGULAR_SCENARIO,
+  //ANGULAR_SCENARIO_ADAPTER,
   
   
   'vendor/assets/javascripts/jquery.min.js',
   'vendor/assets/javascripts/angular/angular.js',
-  
-  
   'vendor/assets/javascripts/angular-mocks/angular-mocks.js',  
-  'app/assets/javascripts/*{.js,.coffee}',
+  'vendor/assets/javascripts/angular-scenario/angular-scenario.js',  
+  
+  
+  'app/assets/javascripts/app.js.coffee',
   'app/assets/javascripts/angular/**',
   'test/mock/**/*.js',
   'test/spec/**/*.js',
@@ -49,7 +50,7 @@ runnerPort = 9100;
 // enable / disable colors in the output (reporters and logs)
 colors = true;
 
-proxies = {'/': 'http://localhost:9876/test/e2e/'};
+proxies = {'/': 'http://localhost:9100/test/e2e/'};
 urlRoot = '/_karma_/';
 
 
@@ -70,7 +71,7 @@ autoWatch = true;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome'];
+browsers = ['Chrome', 'PhantomJS'];
 
 
 // If browser does not capture in given timeout [ms], kill it
