@@ -2,8 +2,21 @@
 This is an example Ruby on Rails webapp using the Instagram API.
 
 
+## Get Started
+To get started fork or clone this repo.
 
-## Summary
+
+### Run Tests
+	bundle exec rspec spec 
+	bundle exec rspec spec/requests/instagrams_spec.rb 
+
+
+### Start Webserver
+	bundle exec rails server
+
+
+=== 
+# Summary
 Using Instagram's popular media API (http://instagram.com/developer/endpoints/media/#get_media_popular), this webapp shows popular images in a grid that refreshes automatically.
 
 ### The app should:
