@@ -37,10 +37,13 @@ angular.module('App')
         self = @
         $scope.App.loading = true
         $http.get("/instagram/#{what}.json", {params: params, cache: false}).success((data) ->
+          
+          
           $scope.App.loading = false
           $scope.App.data.timestamp = new Date()
           $scope.App.data.items = data
 
+          
           callback(data) if callback
           angular.forEach( data, (item, index) ->
             #$scope.App.data.items = data if $scope.App.data.items.length is 0;
@@ -58,9 +61,13 @@ angular.module('App')
         );
       #Handle getting recent images
       getRecent:() ->
+        #hide all images
+        #$scope.App.hideAllImages()
+        
         @current_page = 'Recent'
         @getData('recent', {cache: false}, (data)->
-            
+            #show the images
+            $scope.App.showAllImages()
         )
       #Handle getting popular images
       getPopular: () ->
@@ -87,9 +94,17 @@ angular.module('App')
             console.log(item, index)
           )
         
+      #Handle hiding the images
+      hideAllImages: () ->
+        angular.element("#banjo-tiles li").each((i) ->
+          angular.element(this).delay(500 * i).slideUp()
+        )
+
       #Handle showing each image one by one 
       showAllImages: () ->
-        
+        $("#banjo-tiles li").each((i) -> 
+          $(this).delay(500 * i).slideDown()
+        )        
            
       #Handle initializing isotope plugin
       initIsotope: ->

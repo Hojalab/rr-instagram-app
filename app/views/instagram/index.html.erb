@@ -14,9 +14,11 @@
 				<h1>Instagram <span>{{App.current_page}}</span></h1>
 			</div>
 			<article class="row-fluid" ng-init="App.init()">
-				<section class="span12">					
-					<ul class="thumbnails tiles">
-						<li class="span3 tile" ng-repeat="item in App.data.items" id="tile_{{$index}}">
+				<section class="span12">	
+
+
+					<ul id="banjo-tiles" class="thumbnails tiles">
+						<li class="span3 tile" ng-repeat="item in App.data.items" id="tile_{{$index}}" style='display:none'>
 							<!-- @TODO: [Banjo Tile Directive] -->
 							<banjo-tile id="{{item.id}}"
 							index="{{$index}}"

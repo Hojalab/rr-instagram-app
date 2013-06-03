@@ -1,6 +1,6 @@
 ###
  This is a custom directive for the Banjo Tiles
- 	<banjo-tiles id="banjotiles"></banjo-tiles>
+ 	<banjo-tiles id="banjotiles" items="{{App.data.items}}" timeout="600" effect="slide"></banjo-tiles>
 	
 
  	<div id="tile-grid" class="tiles" style="min-height: 500px;">
@@ -25,16 +25,37 @@ angular.module('App')
 	transclude: true
 	scope:
 		id: "@"
-		modal: "@"
-		image: "@"
-		description: "@"
-		username: "@"
-		comments: "@"
-		likes: "@"
+		ngModel: "="
+		items: "@"
+		timeout: "@"
+		effect: "@"
 		click: "&"
 	restrict: 'E'
-	template: ""
+	template: "
+	<ul id='banjo-tiles' class='thumbnails tiles'>
+		<li class='span3 tile' ng-repeat='item in items' id='tile_{{$index}}'>
+			<banjo-tile id='{{item.id}}'
+				index='{{$index}}'
+				image='{{item.images.thumbnail.url || item.profile_picture}}'
+				description='{{item.caption.text || item.bio}}'
+				username='{{item.user.username || item.username}}'
+				comments=''
+				click='App.selectTile(item);'
+				likes=''>
+				</banjo-tile>
+		</li>
+	</ul>"
 	link: (scope, element, attrs) ->
+		
+		#Hide all element
+		$("#banjo-tiles li").each((i) ->
+			$(this).hide()
+		)
+		
+		#Show each one by one
+		$("#banjo-tiles li").each((i) -> 
+			$(this).delay(600 * i).slideDown()
+		)
 		
 	)
 .directive('banjoTile', () ->
