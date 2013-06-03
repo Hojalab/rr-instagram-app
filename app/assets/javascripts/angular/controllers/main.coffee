@@ -40,7 +40,7 @@ angular.module('App')
           $scope.App.loading = false
           $scope.App.data.timestamp = new Date()
           $scope.App.data.items = data
-          
+
           callback(data) if callback
           angular.forEach( data, (item, index) ->
             #$scope.App.data.items = data if $scope.App.data.items.length is 0;
@@ -50,12 +50,11 @@ angular.module('App')
             
             #Extend each item into eachother
             #$scope.App.data.items[index] = angular.extend(item, $scope.App.data.items[index]);
-            
-            console.log(item, index);
+            console.log(item, index)
           )
           
          # $scope.App.changeAllImages()
-          #$timeout($scope.App.changeAllImages, 1000);
+         
         );
       #Handle getting recent images
       getRecent:() ->
@@ -100,12 +99,23 @@ angular.module('App')
           layoutMode: 'fitRows'
         });  
         
+      #Handle adding a Handlebars template that is a banjo tile to the grid
+      addIsotopItem: (item) ->
+        source   = angular.element("#tmpl-banjo-tile").html()
+        template = Handlebars.compile(source)
+        html = template(item)
+        $newItems = angular.element(template(item))
+        angular.element('#tile-grid').append($newItems).isotope('addItems', $newItems)
+        angular.element('#tile-grid').isotope('reloadItems')
+        @initIsotope()
+        
+        console.log(template);
         
       #Handle adding a image to the grid
       addItem: (item) ->
         html = angular.element('#tmpl_banjo_tile').clone()
         
-        $newItems = angular.element(html)
+        $newItems = angular.element($compile(html)($scope))
         $newItems.removeClass('hidden')
         angular.element('#tile-grid').append($newItems).isotope('addItems', $newItems)
         angular.element('#tile-grid').isotope('reloadItems')

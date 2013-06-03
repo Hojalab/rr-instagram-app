@@ -18,8 +18,10 @@
 //= require angular.min
 //= require angular-resource.min
 //= require angular-ui.min
+//= require handlebars.min
 //= require modernizr.custom.34814
 //= require js-webshim/polyfiller
+
 
 
 //= require bootstrap.min
